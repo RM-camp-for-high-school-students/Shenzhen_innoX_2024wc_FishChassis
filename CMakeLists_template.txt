@@ -58,6 +58,9 @@ include_directories(Task/Inc)
 include_directories(DSP/Include DSP/Include/dsp)
 link_directories(DSP)
 
+# Include mavlink head files
+include_directories(Mavlink/FishChassis)
+
 add_definitions(${defines})
 
 file(GLOB_RECURSE SOURCES ${sources})

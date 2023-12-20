@@ -16,16 +16,755 @@
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug-MinGW-STM32" ENABLED="true" CONFIG_NAME="Debug" TOOLCHAIN_NAME="MinGW-STM32" />
+      <configuration PROFILE_NAME="RelWithDebInfo-MinGW-STM32" ENABLED="true" CONFIG_NAME="RelWithDebInfo" TOOLCHAIN_NAME="MinGW-STM32" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="babba83a-2a78-4ae1-bf29-388873eadff8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/FishChassis.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/FishChassis/FishChassis.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink_msg_chs_ctrl_info.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink_msg_chs_manage_info.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink_msg_chs_motor_info.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink_msg_chs_odom_info.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink_msg_chs_servos_info.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/FishChassis/testsuite.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/FishChassis/version.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/checksum.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/mavlink_conversions.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/mavlink_get_info.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/mavlink_helpers.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/mavlink_sha256.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/mavlink_types.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mavlink/protocol.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/reply/cache-v2-c0988fff0bf6011c690e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/reply/cmakeFiles-v1-eb356c61473ebceaf464.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/reply/codemodel-v2-f5163e952138134065f8.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/reply/directory-.-RelWithDebInfo-d0094a50bb2071803777.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/reply/index-2023-12-20T06-30-50-0456.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/reply/target-FishChassis.elf-RelWithDebInfo-e7d5398b951360f1d8cd.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/reply/toolchains-v1-d043fc9e7ba4635ae80e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeCache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/3.27.0/CMakeASMCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/3.27.0/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/3.27.0/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/3.27.0/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/3.27.0/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/3.27.0/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/3.27.0/CompilerIdC/CMakeCCompilerId.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/3.27.0/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/3.27.0/CompilerIdCXX/CMakeCXXCompilerId.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/ASM.includecache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/AZURE_RTOS/App/app_azure_rtos.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/AZURE_RTOS/App/app_azure_rtos.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/app_threadx.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/app_threadx.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/can.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/can.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/dma.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/dma.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/gpio.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/gpio.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/main.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/main.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/spi.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/spi.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/stm32f4xx_hal_msp.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/stm32f4xx_hal_timebase_tim.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/stm32f4xx_hal_timebase_tim.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/stm32f4xx_it.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/stm32f4xx_it.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/syscalls.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/syscalls.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/sysmem.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/sysmem.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/system_stm32f4xx.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/system_stm32f4xx.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/tim.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/tim.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/tx_initialize_low_level.s.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/usart.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/usart.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/usb_otg.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Src/usb_otg.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Core/Startup/startup_stm32f407ighx.s.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/DependInfo.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_dma.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_dma.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_exti.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_exti.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_gpio.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_gpio.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_rcc.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_rcc.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_tim.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_tim.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_utils.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_utils.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_allocate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_allocate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_cleanup.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_cleanup.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_prioritize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_pool_prioritize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_release.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_block_release.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_allocate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_allocate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_cleanup.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_cleanup.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_prioritize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_prioritize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_search.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_pool_search.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_release.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_byte_release.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_cleanup.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_cleanup.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_set.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_set.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_set_notify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_event_flags_set_notify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_initialize_high_level.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_initialize_high_level.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_initialize_kernel_enter.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_initialize_kernel_enter.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_initialize_kernel_setup.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_initialize_kernel_setup.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_cleanup.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_cleanup.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_prioritize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_prioritize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_priority_change.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_priority_change.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_put.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_mutex_put.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_cleanup.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_cleanup.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_flush.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_flush.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_front_send.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_front_send.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_prioritize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_prioritize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_receive.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_receive.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_send.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_send.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_send_notify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_queue_send_notify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_ceiling_put.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_ceiling_put.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_cleanup.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_cleanup.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_prioritize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_prioritize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_put.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_put.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_put_notify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_semaphore_put_notify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_entry_exit_notify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_identify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_identify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_preemption_change.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_preemption_change.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_priority_change.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_priority_change.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_relinquish.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_relinquish.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_reset.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_reset.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_resume.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_resume.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_shell_entry.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_shell_entry.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_sleep.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_sleep.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_stack_analyze.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_stack_analyze.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_stack_error_handler.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_stack_error_handler.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_stack_error_notify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_stack_error_notify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_suspend.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_suspend.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_system_preempt_check.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_system_preempt_check.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_system_resume.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_system_resume.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_system_suspend.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_system_suspend.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_terminate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_terminate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_time_slice.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_time_slice.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_time_slice_change.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_time_slice_change.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_timeout.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_timeout.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_wait_abort.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_thread_wait_abort.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_time_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_time_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_time_set.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_time_set.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_activate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_activate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_change.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_change.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_deactivate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_deactivate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_expiration_process.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_expiration_process.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_system_activate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_system_activate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_system_deactivate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_system_deactivate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_thread_entry.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_timer_thread_entry.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_buffer_full_notify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_buffer_full_notify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_disable.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_disable.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_enable.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_enable.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_event_filter.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_event_filter.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_event_unfilter.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_event_unfilter.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_interrupt_control.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_interrupt_control.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_isr_enter_insert.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_isr_enter_insert.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_isr_exit_insert.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_isr_exit_insert.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_object_register.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_object_register.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_object_unregister.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_object_unregister.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_user_event_insert.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/tx_trace_user_event_insert.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_allocate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_allocate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_pool_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_pool_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_pool_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_pool_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_pool_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_pool_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_pool_prioritize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_pool_prioritize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_release.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_block_release.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_allocate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_allocate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_pool_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_pool_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_pool_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_pool_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_pool_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_pool_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_pool_prioritize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_pool_prioritize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_release.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_byte_release.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_set.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_set.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_set_notify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_event_flags_set_notify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_prioritize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_prioritize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_put.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_mutex_put.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_flush.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_flush.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_front_send.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_front_send.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_prioritize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_prioritize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_receive.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_receive.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_send.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_send.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_send_notify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_queue_send_notify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_ceiling_put.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_ceiling_put.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_prioritize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_prioritize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_put.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_put.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_put_notify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_semaphore_put_notify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_entry_exit_notify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_entry_exit_notify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_preemption_change.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_preemption_change.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_priority_change.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_priority_change.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_relinquish.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_relinquish.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_reset.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_reset.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_resume.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_resume.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_suspend.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_suspend.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_terminate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_terminate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_time_slice_change.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_time_slice_change.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_wait_abort.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_thread_wait_abort.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_activate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_activate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_change.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_change.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_deactivate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_deactivate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_info_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/common/src/txe_timer_info_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/ports/cortex_m4/gnu/src/tx_thread_context_restore.S.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/ports/cortex_m4/gnu/src/tx_thread_context_save.S.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/ports/cortex_m4/gnu/src/tx_thread_interrupt_control.S.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/ports/cortex_m4/gnu/src/tx_thread_schedule.S.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/ports/cortex_m4/gnu/src/tx_thread_stack_build.S.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/ports/cortex_m4/gnu/src/tx_thread_system_return.S.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/threadx/ports/cortex_m4/gnu/src/tx_timer_interrupt.S.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_alternate_setting_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_alternate_setting_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_alternate_setting_set.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_alternate_setting_set.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_class_register.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_class_register.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_class_unregister.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_class_unregister.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_clear_feature.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_clear_feature.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_configuration_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_configuration_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_configuration_set.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_configuration_set.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_control_request_process.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_control_request_process.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_descriptor_send.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_descriptor_send.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_disconnect.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_disconnect.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_endpoint_stall.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_endpoint_stall.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_get_status.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_get_status.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_host_wakeup.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_set.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_set.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_interface_start.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_microsoft_extension_register.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_microsoft_extension_register.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_set_feature.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_set_feature.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_transfer_abort.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_transfer_abort.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_transfer_all_request_abort.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_transfer_all_request_abort.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_transfer_request.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_transfer_request.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_uninitialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_device_stack_uninitialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_system_error_handler.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_system_error_handler.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_system_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_system_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_system_uninitialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_system_uninitialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_trace_event_insert.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_trace_event_insert.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_trace_event_update.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_trace_event_update.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_trace_object_register.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_trace_object_register.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_trace_object_unregister.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_trace_object_unregister.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_debug_callback_register.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_debug_callback_register.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_debug_log.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_debug_log.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_delay_ms.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_delay_ms.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_pack.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_pack.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_descriptor_parse.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_error_callback_register.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_error_callback_register.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_event_flags_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_event_flags_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_event_flags_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_event_flags_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_event_flags_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_event_flags_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_event_flags_set.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_event_flags_set.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_long_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_long_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_long_get_big_endian.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_long_get_big_endian.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_long_put.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_long_put.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_long_put_big_endian.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_long_put_big_endian.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_add_safe.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulc_safe.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulc_safe.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_allocate_mulv_safe.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_compare.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_copy.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_free.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_free_block_best_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_free_block_best_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_set.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_memory_set.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_mutex_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_mutex_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_mutex_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_mutex_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_mutex_off.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_mutex_off.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_mutex_on.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_pci_class_scan.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_pci_class_scan.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_pci_read.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_pci_read.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_pci_write.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_pci_write.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_physical_address.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_physical_address.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_semaphore_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_semaphore_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_semaphore_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_semaphore_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_semaphore_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_semaphore_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_semaphore_put.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_semaphore_put.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_set_interrupt_handler.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_set_interrupt_handler.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_short_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_short_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_short_get_big_endian.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_short_get_big_endian.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_short_put.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_short_put.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_short_put_big_endian.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_short_put_big_endian.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_string_length_check.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_string_length_check.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_string_length_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_string_to_unicode.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_string_to_unicode.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_delete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_delete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_identify.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_identify.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_relinquish.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_resume.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_resume.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_schedule_other.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_sleep.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_sleep.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_suspend.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_thread_suspend.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_timer_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_timer_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_unicode_to_string.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_unicode_to_string.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_virtual_address.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/core/src/ux_utility_virtual_address.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_activate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_activate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_bulkin_thread.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_bulkin_thread.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_bulkout_thread.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_bulkout_thread.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_control_request.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_control_request.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_deactivate.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_deactivate.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_entry.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_entry.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_ioctl.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_ioctl.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_read.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_read.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_unitialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_unitialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_write.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_write.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_write_with_callback.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_device_classes/src/ux_device_class_cdc_acm_write_with_callback.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_callback.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_callback.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_endpoint_create.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_endpoint_create.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_endpoint_destroy.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_endpoint_destroy.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_endpoint_reset.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_endpoint_reset.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_endpoint_stall.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_endpoint_stall.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_endpoint_status.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_endpoint_status.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_frame_number_get.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_frame_number_get.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_function.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_function.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_initialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_initialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_initialize_complete.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_initialize_complete.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_interrupt_handler.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_interrupt_handler.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_transfer_abort.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_transfer_abort.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_transfer_request.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_transfer_request.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_uninitialize.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Middlewares/ST/usbx/common/usbx_stm32_device_controllers/ux_dcd_stm32_uninitialize.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Task/Src/MSGTubeTask.cpp.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Task/Src/MSGTubeTask.cpp.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Task/Src/TaskBooster.cpp.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Task/Src/TaskBooster.cpp.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Task/Src/TestTask.cpp.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/Task/Src/TestTask.cpp.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/USBX/App/app_usbx_device.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/USBX/App/app_usbx_device.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/USBX/App/ux_device_cdc_acm.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/USBX/App/ux_device_cdc_acm.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/USBX/App/ux_device_descriptors.c.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/USBX/App/ux_device_descriptors.c.obj.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/build.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/cmake_clean.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/compiler_depend.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/compiler_depend.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/depend.internal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/depend.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/flags.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/link.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/objects1.rsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/FishChassis.elf.dir/progress.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/Makefile2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/clion-RelWithDebInfo-MinGW-STM32-log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/progress.marks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/FishChassis.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/FishChassis.cbp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/FishChassis.elf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/FishChassis.hex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/FishChassis.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists_template.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DSP/libCMSISDSP.a" beforeDir="false" afterPath="$PROJECT_DIR$/DSP/libCMSISDSP.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mavlink/Chassis.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/Src/TestTask.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Src/TestTask.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cache-v2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/query/cache-v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/query/cmakeFiles-v1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/query/codemodel-v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/.cmake/api/v1/query/toolchains-v1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.27.0/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/3.27.0/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-relwithdebinfo-mingw-stm32/CMakeFiles/cmake.check_cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +795,12 @@
       </list>
     </option>
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-MinGW-STM32" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:RelWithDebInfo-MinGW-STM32" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -75,33 +817,33 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "OpenOCD 下载并运行.OCD FishChassis.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/WorkSpace/Innox2024w/FishChassis/.ocd/STM32F407.svd",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CMakeSettings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;OpenOCD 下载并运行.OCD FishChassis.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/WorkSpace/Innox2024w/FishChassis/.ocd/STM32F407.svd&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="OpenOCD 下载并运行.OCD FishChassis">
-    <configuration name="FishChassis.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="FishChassis.elf" CONFIG_NAME="Debug-MinGW-STM32" RUN_TARGET_PROJECT_NAME="FishChassis" RUN_TARGET_NAME="FishChassis.elf">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="FishChassis.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="FishChassis.elf" CONFIG_NAME="RelWithDebInfo-MinGW-STM32" RUN_TARGET_PROJECT_NAME="FishChassis" RUN_TARGET_NAME="FishChassis.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -132,7 +874,8 @@
       <workItem from="1702885491693" duration="10336000" />
       <workItem from="1702916247283" duration="88000" />
       <workItem from="1702916509770" duration="1460000" />
-      <workItem from="1702977561829" duration="709000" />
+      <workItem from="1702977561829" duration="1557000" />
+      <workItem from="1703053587301" duration="653000" />
     </task>
     <servers />
   </component>

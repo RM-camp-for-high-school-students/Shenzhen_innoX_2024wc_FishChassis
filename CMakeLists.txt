@@ -59,6 +59,9 @@ include_directories(Task/Inc)
 include_directories(DSP/Include DSP/Include/dsp)
 link_directories(DSP)
 
+# Include mavlink head files
+include_directories(Mavlink/FishChassis)
+
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -DTX_INCLUDE_USER_DEFINE_FILE -DUX_INCLUDE_USER_DEFINE_FILE -DUSE_FULL_LL_DRIVER)
 
 file(GLOB_RECURSE SOURCES "AZURE_RTOS/*.*" "USBX/*.*" "ThreadX/*.*" "Core/*.*" "Middlewares/*.*" "Drivers/*.*")
