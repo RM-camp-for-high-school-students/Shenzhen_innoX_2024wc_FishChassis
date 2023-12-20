@@ -1,15 +1,11 @@
 #include "main.h"
-
 #include "DL_F407.h"
-#include "TaskBooster.h"
 
 #include "cstdarg"
 #include "functional"
 #include "string"
 
-#include "algorithm"
 #include "app_threadx.h"
-#include "cmsis_gcc.h"
 
 using namespace std;
 

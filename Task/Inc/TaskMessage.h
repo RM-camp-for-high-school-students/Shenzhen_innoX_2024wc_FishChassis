@@ -5,8 +5,8 @@
  * @LastEditTime: 2023-10-06 15:55:08
  * @LastEditors: qianwan
  */
-#ifndef MSGTUBETASK_H
-#define MSGTUBETASK_H
+#ifndef TASK_MESSAGE_H
+#define TASK_MESSAGE_H
 
 #include "main.h"
 
@@ -14,8 +14,8 @@
 
 
 extern "C" {
-    void usbx_cdc_acm_read_thread_entry(ULONG arg);
-    void usbx_cdc_acm_write_thread_entry(ULONG arg);
+[[noreturn]] void usbx_cdc_acm_read_thread_entry(ULONG arg);
+[[noreturn]] void usbx_cdc_acm_write_thread_entry(ULONG arg);
 }
 #endif
 

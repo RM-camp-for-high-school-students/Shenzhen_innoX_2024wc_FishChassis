@@ -32,7 +32,7 @@
 #include "ux_device_descriptors.h"
 #include "ux_device_cdc_acm.h"
 #include "ux_device_class_cdc_acm.h"
-#include "MSGTubeTask.h"
+#include "TaskMessage.h"
 
 /* USER CODE END Includes */
 
@@ -72,7 +72,11 @@ extern  PCD_HandleTypeDef hpcd_USB_OTG_FS;
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
 void  usbx_app_thread_entry(ULONG arg);
+
+
 extern void usbx_cdc_acm_read_thread_entry(ULONG arg);
+
+
 extern void usbx_cdc_acm_write_thread_entry(ULONG arg);
 /* USER CODE END PFP */
 /**

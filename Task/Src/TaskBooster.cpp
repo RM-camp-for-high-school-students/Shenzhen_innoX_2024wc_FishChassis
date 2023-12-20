@@ -1,10 +1,6 @@
 #include "app_threadx.h"
 #include "TaskBooster.h"
 
-
-TX_BYTE_POOL ComPool;
-uint8_t UART_PoolBuf[10240]={0};
-
 extern TX_THREAD Test01Thread;
 extern uint8_t Test01ThreadStack[2048];
 extern void Test01ThreadFun(ULONG initial_input);
@@ -22,19 +18,9 @@ extern uint8_t HeartBeatThreadStack[2048];
 
 extern void HeartBeatThreadFun(ULONG initial_input);
 
-//extern TX_THREAD DebugThread;
-//extern uint8_t DebugThreadStack[256];
-//extern void DebugThreadFun(ULONG initial_input);
-
-void Task_Init()
+void Task_Booster()
 {
-/**********内存池***********/
-	tx_byte_pool_create(
-		&ComPool,
-		(CHAR*)"UART_Pool",
-		UART_PoolBuf,
-		sizeof(UART_PoolBuf));
-	
+
 
 /**********信号量***********/	
 //	tx_semaphore_create(
@@ -98,18 +84,6 @@ void Task_Init()
 //	 	3,
 //	 	TX_NO_TIME_SLICE,
 //	 	TX_AUTO_START);
-
-//	tx_thread_create(
-//		&DebugThread,
-//		(CHAR*)"DEBUG",
-//		DebugThreadFun,
-//		0x0000,
-//		DebugThreadStack,
-//		sizeof(DebugThreadStack),
-//		10,
-//		10,
-//		TX_NO_TIME_SLICE,
-//		TX_AUTO_START);
 
 		tx_thread_create(
 		&HeartBeatThread, 

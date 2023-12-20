@@ -55,7 +55,8 @@ static UCHAR  ux_device_byte_pool_buffer[UX_DEVICE_APP_MEM_POOL_SIZE];
 static TX_BYTE_POOL ux_device_app_byte_pool;
 
 /* USER CODE BEGIN PV */
-extern void Task_Init();
+extern void Service_Booster();
+extern void Task_Booster();
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -125,7 +126,8 @@ VOID tx_application_define(VOID *first_unused_memory)
     }
 
     /* USER CODE BEGIN MX_USBX_Device_Init_Success */
-    Task_Init();
+    Service_Booster();
+    Task_Booster();
     /* USER CODE END MX_USBX_Device_Init_Success */
   }
 }

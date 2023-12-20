@@ -51,7 +51,14 @@ endif ()
 
 include_directories(${includes})
 
-# include user head files
+# Include arm_math head files
+include_directories(DSP/Include DSP/Include/dsp)
+link_directories(DSP)
+
+# include user service head files
+include_directories(Service/Inc)
+
+# include user task head files
 include_directories(Task/Inc)
 
 # Include arm_math head files
@@ -66,7 +73,9 @@ add_definitions(${defines})
 file(GLOB_RECURSE SOURCES ${sources})
 
 # Add user source files
+file(GLOB_RECURSE SERVICES "Service/*.*")
 file(GLOB_RECURSE TASKS "Task/*.*")
+LIST(APPEND SOURCES ${SERVICES})
 LIST(APPEND SOURCES ${TASKS})
 
 set(LINKER_SCRIPT $${CMAKE_SOURCE_DIR}/${linkerScript})
@@ -79,6 +88,9 @@ add_executable($${PROJECT_NAME}.elf $${SOURCES} $${LINKER_SCRIPT})
 
 # Link arm_math
 target_link_libraries($${PROJECT_NAME}.elf PUBLIC $${CMAKE_SOURCE_DIR}/DSP/libCMSISDSP.a)
+# Add OneMessage
+add_subdirectory(Module/OneMessage om)
+target_include_directories($${PROJECT_NAME}.elf PUBLIC $<TARGET_PROPERTY:OneMessage,INCLUDE_DIRECTORIES>)
 
 set(HEX_FILE $${PROJECT_BINARY_DIR}/$${PROJECT_NAME}.hex)
 set(BIN_FILE $${PROJECT_BINARY_DIR}/$${PROJECT_NAME}.bin)
