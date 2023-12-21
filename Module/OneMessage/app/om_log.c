@@ -42,7 +42,7 @@ static om_topic_t om_log_topic;
 
 om_status_t om_log_init() {
   om_core_topic_create_static(&om_log_topic, "om_log", sizeof(om_log_t));
-  om_mutex_init(&om_log_mutex);
+  om_mutex_init(&om_log_mutex,(char*)"om_log_mutex");
   om_mutex_unlock(&om_log_mutex);
   om_log_initd = true;
 

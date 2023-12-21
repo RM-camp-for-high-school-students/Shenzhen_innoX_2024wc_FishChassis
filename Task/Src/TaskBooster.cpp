@@ -60,17 +60,17 @@ void Task_Booster()
 	 	TX_NO_TIME_SLICE,
 	 	TX_AUTO_START);
 
-//	tx_thread_create(
-//		&Test02Thread,
-//		(CHAR*)"TEST2",
-//		Test02ThreadFun,
-//		0x0000,
-//		Test02ThreadStack,
-//		sizeof(Test02ThreadStack),
-//		5,
-//		5,
-//		TX_NO_TIME_SLICE,
-//		TX_AUTO_START);
+	tx_thread_create(
+		&Test02Thread,
+		(CHAR*)"TEST2",
+		Test02ThreadFun,
+		0x0000,
+		Test02ThreadStack,
+		sizeof(Test02ThreadStack),
+		5,
+		5,
+		TX_NO_TIME_SLICE,
+		TX_AUTO_START);
 
 
 //	 tx_thread_create(

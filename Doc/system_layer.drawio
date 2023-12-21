@@ -1,0 +1,67 @@
+<mxfile host="65bd71144e">
+    <diagram id="MbTIhXqFbSv1klHWKGk7" name="第 1 页">
+        <mxGraphModel dx="518" dy="342" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="13" value="&lt;font color=&quot;#4d4d4d&quot;&gt;TASK-IMU&lt;/font&gt;" style="rounded=1;html=1;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="160" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="ThreadX" style="rounded=0;html=1;fillColor=#6d8764;strokeColor=none;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="240" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="rounded=0;html=1;fillColor=#6d8764;strokeColor=none;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="200" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="ST-HAL/LL" style="rounded=0;html=1;fillColor=#647687;strokeColor=none;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="240" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="" style="rounded=0;html=1;fillColor=#647687;strokeColor=none;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="720" y="200" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="OneMessage" style="rounded=0;html=1;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="200" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="USBX" style="rounded=0;html=1;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="560" y="200" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Mavlink2" style="rounded=0;html=1;fillColor=#76608a;strokeColor=#432D57;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="200" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="&lt;font color=&quot;#4d4d4d&quot;&gt;TASK-CHS&lt;/font&gt;" style="rounded=1;html=1;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="160" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="&lt;font color=&quot;#4d4d4d&quot;&gt;TASK-CDC&lt;/font&gt;" style="rounded=1;html=1;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="160" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="&lt;font color=&quot;#4d4d4d&quot;&gt;TASKS...&lt;/font&gt;" style="rounded=1;html=1;fillColor=#ffcc99;strokeColor=#36393d;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="160" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="&lt;font color=&quot;#ff0000&quot;&gt;Task APP Layer&lt;/font&gt;" style="rounded=1;html=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="160" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="&lt;font color=&quot;#ff0000&quot;&gt;Service Layer&lt;/font&gt;" style="rounded=1;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="200" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="&lt;font color=&quot;#ff0000&quot;&gt;OS Layer&lt;/font&gt;" style="rounded=1;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="240" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Hardware Layer" style="rounded=1;html=1;fillColor=#e51400;strokeColor=#B20000;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="280" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="&lt;font color=&quot;#000000&quot;&gt;STM32F407IGH6&lt;/font&gt;" style="rounded=0;html=1;fillColor=#fad9d5;strokeColor=#ae4132;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="280" width="320" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="Hardware Layer" style="rounded=1;html=1;fillColor=#e51400;strokeColor=#B20000;fontColor=#ffffff;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="280" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="&lt;font color=&quot;#ff0000&quot;&gt;OS Layer&lt;/font&gt;" style="rounded=1;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="240" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="&lt;font color=&quot;#ff0000&quot;&gt;Service Layer&lt;/font&gt;" style="rounded=1;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="200" width="100" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

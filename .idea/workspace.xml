@@ -25,13 +25,37 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AZURE_RTOS/App/app_azure_rtos.c" beforeDir="false" afterPath="$PROJECT_DIR$/AZURE_RTOS/App/app_azure_rtos.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists_template.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/Inc/MSGTubeTask.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/Inc/TaskBooster.h" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Inc/TaskBooster.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/Src/MSGTubeTask.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_afl.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_afl.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_afl.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_afl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_com.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_com.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_com.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_com.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_evt.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_evt.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_evt.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_evt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_fmt.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_fmt.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_fmt.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_fmt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_log.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_log.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_log.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_log.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_msg.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_msg.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/app/om_msg.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/app/om_msg.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/comp/om_color.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/comp/om_color.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/comp/om_color.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/comp/om_color.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/comp/om_crc.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/comp/om_crc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/comp/om_crc.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/comp/om_crc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/comp/om_fifo.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/comp/om_fifo.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/comp/om_fifo.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/comp/om_fifo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/comp/om_rbt.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/comp/om_rbt.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/comp/om_rbt.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/comp/om_rbt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/core/om_core.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/core/om_core.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/core/om_core.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/core/om_core.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/om.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/om.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/om.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/om.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/OneMessage/om_config.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/om_config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/Src/ServceMessage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServceMessage.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/Src/TaskBooster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Src/TaskBooster.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/Src/TestTask.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Src/TestTask.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USBX/App/app_usbx_device.c" beforeDir="false" afterPath="$PROJECT_DIR$/USBX/App/app_usbx_device.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,26 +108,28 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;OpenOCD 下载并运行.OCD FishChassis.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/WorkSpace/Innox2024w/FishChassis/.ocd/STM32F407.svd&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CMakeSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake 应用程序.FishChassis.elf.executor": "Debug",
+    "OpenOCD 下载并运行.OCD FishChassis.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/WorkSpace/Innox2024w/FishChassis/.ocd/STM32F407.svd",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CMakeSettings",
+    "structure.view.defaults.are.configured": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="OpenOCD 下载并运行.OCD FishChassis">
     <configuration name="FishChassis.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="FishChassis.elf" CONFIG_NAME="RelWithDebInfo-MinGW-STM32" RUN_TARGET_PROJECT_NAME="FishChassis" RUN_TARGET_NAME="FishChassis.elf">
       <method v="2">
@@ -150,6 +176,8 @@
       <workItem from="1702977561829" duration="1557000" />
       <workItem from="1703053587301" duration="1712000" />
       <workItem from="1703056985624" duration="11168000" />
+      <workItem from="1703129958738" duration="9277000" />
+      <workItem from="1703139812397" duration="9040000" />
     </task>
     <servers />
   </component>
@@ -160,5 +188,21 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Module/OneMessage/app/om_fmt.c</url>
+          <line>102</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="com.jetbrains.cidr.embedded.openocd.conf.type">
+        <watch expression="core_lock" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

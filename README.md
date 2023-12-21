@@ -7,7 +7,7 @@
 -->
 # Fish Chassis System
 *深圳科创学院2024高中生机器人冬令营 底盘嵌入式系统*   
-*InnoxSZ 2024 Robotics Winter Camp of High School Students.* 
+*InnoxSZ 2024 Robotics Winter Camp for High School Students.* 
 
 - [Fish Chassis System](#fish-chassis-system)
   - [Environment](#environment)
@@ -15,6 +15,7 @@
 
 
 ## Environment
+#### Software
 - Code generator: [STM32CubeMX-6.10.0](https://www.st.com/zh/development-tools/stm32cubemx.html)
 - Tools chains: [arm-none-eabi-gcc](https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads)
 - Debuger: [OpenOCD](https://github.com/xpack-dev-tools/openocd-xpack/releases) + GDB(Windows need [mingw64](https://github.com/skeeto/w64devkit/releases))
@@ -26,5 +27,15 @@
 > One more thing: Use clangd need to edit ___.vscode/setting.json___ :    
 >   _--query-driver = "your\\arm\\tool\\chain\\bin\\arm-none-eabi-g*"_
 
-## Control Protocol
-[FishChassis Protocl](./Mavlink/README.md)
+#### Packages
+- STM32CubeF4 Firmware Package V1.28.0
+- STM32CubeExpansion_AZRTOS-F4 V1.1.0
+
+#### Communication Module
+[FishChassis Protocl with Mavlink2](./Mavlink/README.md)
+
+#### Publisher-Subscriber Module
+[OneMessage](Module/OneMessage/README.md)
+
+## Construction
+![Layer](Doc/system_layer.svg)
