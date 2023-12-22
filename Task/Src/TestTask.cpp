@@ -13,7 +13,8 @@ using namespace std;
 #include "spi.h"
 #include "mavlink.h"
 #include "om.h"
-
+#include "libspi-i-hal-1.0.hpp"
+using namespace SPI;
 /*TraceX utilities*/
 #define TRC_BUF_SIZE (500 * 256) /* Buffer size */
 #define TRC_MAX_OBJ_COUNT (40)   /* Max number of ThreadX objects */

@@ -16,6 +16,9 @@ SRAM_SET_CCM UCHAR Math_PoolBuf[4096] = {0};
 //extern uint8_t DebugThreadStack[256];
 //extern void DebugThreadFun(ULONG initial_input);
 
+extern TX_THREAD IMUThread;
+extern uint8_t IMUThreadStack[2048];
+extern void IMUThreadFun(ULONG initial_input);
 
 
 
@@ -69,16 +72,16 @@ void Service_Booster(void) {
 
 /**********进程***********/
 
-//	tx_thread_create(
-//		&DebugThread,
-//		(CHAR*)"DEBUG",
-//		DebugThreadFun,
-//		0x0000,
-//		DebugThreadStack,
-//		sizeof(DebugThreadStack),
-//		10,
-//		10,
-//		TX_NO_TIME_SLICE,
-//		TX_AUTO_START);
+	tx_thread_create(
+		&IMUThread,
+		(CHAR*)"IMU",
+        IMUThreadFun,
+		0x0000,
+        IMUThreadStack,
+		sizeof(IMUThreadStack),
+		5,
+		5,
+		TX_NO_TIME_SLICE,
+		TX_AUTO_START);
 
 }

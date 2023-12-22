@@ -54,27 +54,26 @@ include_directories(${includes})
 # Include arm_math head files
 include_directories(DSP/Include DSP/Include/dsp)
 link_directories(DSP)
-
+# Include PSAI head files
+include_directories(Module/PSAI/Inc)
+# Include mavlink head files
+include_directories(Module/Mavlink/FishChassis)
+# Include IMU head files
+include_directories(Module/IMU/Inc)
 # include user service head files
 include_directories(Service/Inc)
-
 # include user task head files
 include_directories(Task/Inc)
-
-# Include arm_math head files
-include_directories(DSP/Include DSP/Include/dsp)
-link_directories(DSP)
-
-# Include mavlink head files
-include_directories(Mavlink/FishChassis)
 
 add_definitions(${defines})
 
 file(GLOB_RECURSE SOURCES ${sources})
 
 # Add user source files
+file(GLOB_RECURSE Module "Module/*.*")
 file(GLOB_RECURSE SERVICES "Service/*.*")
 file(GLOB_RECURSE TASKS "Task/*.*")
+LIST(APPEND SOURCES ${Module})
 LIST(APPEND SOURCES ${SERVICES})
 LIST(APPEND SOURCES ${TASKS})
 
@@ -86,11 +85,13 @@ add_link_options(-T $${LINKER_SCRIPT})
 
 add_executable($${PROJECT_NAME}.elf $${SOURCES} $${LINKER_SCRIPT})
 
-# Link arm_math
-target_link_libraries($${PROJECT_NAME}.elf PUBLIC $${CMAKE_SOURCE_DIR}/DSP/libCMSISDSP.a)
 # Add OneMessage
 add_subdirectory(Module/OneMessage om)
 target_include_directories($${PROJECT_NAME}.elf PUBLIC $<TARGET_PROPERTY:OneMessage,INCLUDE_DIRECTORIES>)
+
+# Link arm_math
+target_link_libraries($${PROJECT_NAME}.elf PUBLIC $${CMAKE_SOURCE_DIR}/DSP/libCMSISDSP.a OneMessage)
+
 
 set(HEX_FILE $${PROJECT_BINARY_DIR}/$${PROJECT_NAME}.hex)
 set(BIN_FILE $${PROJECT_BINARY_DIR}/$${PROJECT_NAME}.bin)

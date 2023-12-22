@@ -6,12 +6,8 @@
 #define OM_USE_USER_MALLOC (1)
 
 /* 用户内存分配函数 */
-extern TX_BYTE_POOL MsgPool;
-inline void* user_malloc(size_t size){
-    void* address = 0;
-    tx_byte_allocate(&MsgPool,&address,size,TX_NO_WAIT);
-    return address;
-}
+void* user_malloc(size_t size);
+
 #if OM_USE_USER_MALLOC
 #define om_malloc user_malloc
 #define om_free tx_byte_release

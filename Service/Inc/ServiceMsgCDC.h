@@ -7,9 +7,8 @@
  */
 #ifndef SERVICE_MESSAGE_H
 #define SERVICE_MESSAGE_H
-
-#include "main.h"
 #ifdef __cplusplus
+#include "tx_api.h"
 
 extern "C" {
 [[noreturn]] void usbx_cdc_acm_read_thread_entry(ULONG arg);

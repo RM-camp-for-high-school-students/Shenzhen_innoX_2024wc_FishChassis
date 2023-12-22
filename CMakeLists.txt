@@ -55,44 +55,43 @@ include_directories(Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_
 # Include arm_math head files
 include_directories(DSP/Include DSP/Include/dsp)
 link_directories(DSP)
-
+# Include PSAI head files
+include_directories(Module/PSAI/Inc)
+# Include mavlink head files
+include_directories(Module/Mavlink/FishChassis)
+# Include IMU head files
+include_directories(Module/IMU/Inc)
 # include user service head files
 include_directories(Service/Inc)
-
 # include user task head files
 include_directories(Task/Inc)
-
-# Include mavlink head files
-include_directories(Mavlink/FishChassis)
-
-
 
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -DTX_INCLUDE_USER_DEFINE_FILE -DUX_INCLUDE_USER_DEFINE_FILE -DUSE_FULL_LL_DRIVER)
 
 file(GLOB_RECURSE SOURCES "AZURE_RTOS/*.*" "USBX/*.*" "ThreadX/*.*" "Core/*.*" "Middlewares/*.*" "Drivers/*.*")
 
 # Add user source files
+file(GLOB_RECURSE Module "Module/*.*")
 file(GLOB_RECURSE SERVICES "Service/*.*")
 file(GLOB_RECURSE TASKS "Task/*.*")
+LIST(APPEND SOURCES ${Module})
 LIST(APPEND SOURCES ${SERVICES})
 LIST(APPEND SOURCES ${TASKS})
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F407IGHX_FLASH.ld)
 
-add_link_options(-specs=nano.specs)
-#add_link_options(-specs=nosys.specs)
 add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map)
 add_link_options(-mcpu=cortex-m4 -mthumb -mthumb-interwork)
 add_link_options(-T ${LINKER_SCRIPT})
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 
-# Link arm_math
-target_link_libraries(${PROJECT_NAME}.elf PUBLIC ${CMAKE_SOURCE_DIR}/DSP/libCMSISDSP.a)
 # Add OneMessage
 add_subdirectory(Module/OneMessage om)
 target_include_directories(${PROJECT_NAME}.elf PUBLIC $<TARGET_PROPERTY:OneMessage,INCLUDE_DIRECTORIES>)
-target_link_libraries(${PROJECT_NAME}.elf PUBLIC OneMessage)
+
+# Link arm_math
+target_link_libraries(${PROJECT_NAME}.elf PUBLIC ${CMAKE_SOURCE_DIR}/DSP/libCMSISDSP.a OneMessage)
 
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
