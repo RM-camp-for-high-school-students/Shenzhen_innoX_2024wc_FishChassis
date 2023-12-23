@@ -26,14 +26,7 @@ extern TX_BYTE_POOL ComPool;
 
 // extern MSGTube::cMSGTube* msgTube;
 
-uint8_t DebugPrintf(uint8_t *buf, const char *str, ...) {
-    /*计算字符串长度,并将字符串输出到数据区*/
-    va_list ap;
-    va_start(ap, str);
-    uint8_t len = vsnprintf((char *) buf, 256, str, ap);
-    va_end(ap);
-    return len;
-}
+
 
 SRAM_SET_CCM TX_THREAD Test01Thread;
 SRAM_SET_CCM uint8_t Test01ThreadStack[2048] = {0};

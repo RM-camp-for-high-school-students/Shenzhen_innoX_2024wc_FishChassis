@@ -69,8 +69,8 @@ typedef struct
 extern QEKF_INS_t QEKF_INS;
 extern float chiSquare;
 extern float ChiSquareTestThreshold;
-void IMU_QuaternionEKF_Init(float process_noise1, float process_noise2, float measure_noise, float lambda, float dt);
-void IMU_QuaternionEKF_Update(float *q, float gx, float gy, float gz, float ax, float ay, float az);
+void IMU_QuaternionEKF_Init(float process_noise1, float process_noise2, float measure_noise, float lambda);
+void IMU_QuaternionEKF_Update(float *q, float gx, float gy, float gz, float ax, float ay, float az, float dt);
 void IMU_QuaternionEKF_Reset(void);
 #ifdef __cplusplus
 }

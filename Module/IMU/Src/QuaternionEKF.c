@@ -59,7 +59,7 @@ static void IMU_QuaternionEKF_xhatUpdate(KalmanFilter_t *kf);
  * @param[in] lambda			fading coefficient          0.9996
  * @param[in] dt					update period in s
  */
-void IMU_QuaternionEKF_Init(float process_noise1, float process_noise2, float measure_noise, float lambda, float dt)
+void IMU_QuaternionEKF_Init(float process_noise1, float process_noise2, float measure_noise, float lambda)
 {
     QEKF_INS.Q1 = process_noise1;
     QEKF_INS.Q2 = process_noise2;
@@ -68,8 +68,7 @@ void IMU_QuaternionEKF_Init(float process_noise1, float process_noise2, float me
     QEKF_INS.ConvergeFlag = 0;
     QEKF_INS.ErrorCount = 0;
     QEKF_INS.UpdateCount = 0;
-	QEKF_INS.dt = dt;
-    
+
 	if (lambda > 1)
     {
         lambda = 1;
@@ -127,7 +126,7 @@ void IMU_QuaternionEKF_Reset(void)
  * @param[in] 	accel x y z in m/s²
  * @param[in] 	update period in s
  */
-void IMU_QuaternionEKF_Update(float *q, float gx, float gy, float gz, float ax, float ay, float az)
+void IMU_QuaternionEKF_Update(float *q, float gx, float gy, float gz, float ax, float ay, float az, float dt)
 {
     // 0.5(Ohm-Ohm^bias)*deltaT,用于更新工作点处的状态转移F矩阵
     volatile float halfgxdt, halfgydt, halfgzdt;
@@ -145,6 +144,7 @@ void IMU_QuaternionEKF_Update(float *q, float gx, float gy, float gz, float ax, 
     QEKF_INS.Gyro[0] = gx - QEKF_INS.GyroBias[0];
     QEKF_INS.Gyro[1] = gy - QEKF_INS.GyroBias[1];
     QEKF_INS.Gyro[2] = gz - QEKF_INS.GyroBias[2];
+    QEKF_INS.dt = dt;
 
     // set F
     halfgxdt = 0.5f * QEKF_INS.Gyro[0] * QEKF_INS.dt;
