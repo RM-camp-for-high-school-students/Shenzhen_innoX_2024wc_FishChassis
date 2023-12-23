@@ -17,43 +17,26 @@
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug-MinGW-STM32" ENABLED="true" CONFIG_NAME="Debug" TOOLCHAIN_NAME="MinGW-STM32" />
+      <configuration PROFILE_NAME="RelWithDebInfo-MinGW-STM32" ENABLED="true" CONFIG_NAME="RelWithDebInfo" TOOLCHAIN_NAME="MinGW-STM32" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="babba83a-2a78-4ae1-bf29-388873eadff8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/qianw.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists_template.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/main.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/main.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/gpio.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/gpio.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32f4xx_it.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32f4xx_it.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/spi.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/spi.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/stm32f4xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32f4xx_it.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DSP/libCMSISDSP.a" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/FishChassis.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/FishChassis.ioc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/FishChassis.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/FishChassis/FishChassis.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink_msg_chs_ctrl_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink_msg_chs_manage_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink_msg_chs_motor_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink_msg_chs_odom_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/FishChassis/mavlink_msg_chs_servos_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/FishChassis/testsuite.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/FishChassis/version.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/checksum.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/mavlink_conversions.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/mavlink_get_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/mavlink_helpers.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/mavlink_sha256.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/mavlink_types.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mavlink/protocol.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/OneMessage/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/OneMessage/core/om_core.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/core/om_core.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/OneMessage/om_config.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/OneMessage/om_config.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Inc/ServiceMsgCDC.h" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Inc/ServiceMsgCDC.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/IMU/Inc/libbmi088-1.0.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Module/IMU/Inc/libbmi088-1.0.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/IMU/Src/libbmi088-1.0.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Module/IMU/Src/libbmi088-1.0.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/PSAI/Inc/libimu-a-1.0.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/PSAI/Inc/libimu-a-1.0.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/Inc/ServiceBooster.h" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Inc/ServiceBooster.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/Src/ServiceIMU.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceIMU.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/Src/TaskBooster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Src/TaskBooster.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/Src/TestTask.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Src/TestTask.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-MinGW-STM32" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:RelWithDebInfo-MinGW-STM32" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -125,23 +108,23 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "CMakeSettings",
     "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="OpenOCD 下载并运行.OCD FishChassis">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FishChassis.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="FishChassis.elf" CONFIG_NAME="Debug-MinGW-STM32" RUN_TARGET_PROJECT_NAME="FishChassis" RUN_TARGET_NAME="FishChassis.elf">
+    <configuration name="FishChassis.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="FishChassis.elf" CONFIG_NAME="RelWithDebInfo-MinGW-STM32" RUN_TARGET_PROJECT_NAME="FishChassis" RUN_TARGET_NAME="FishChassis.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OneMessage" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="OneMessage" CONFIG_NAME="Debug-MinGW-STM32">
+    <configuration name="OneMessage" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="OneMessage" CONFIG_NAME="RelWithDebInfo-MinGW-STM32">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -182,6 +165,7 @@
       <workItem from="1703231621222" duration="18666000" />
       <workItem from="1703262283638" duration="205000" />
       <workItem from="1703262502445" duration="6946000" />
+      <workItem from="1703299664061" duration="13894000" />
     </task>
     <servers />
   </component>
@@ -194,17 +178,18 @@
     <isAutomaticReloadCMake value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Service/Src/ServiceIMU.cpp</url>
+          <line>62</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="com.jetbrains.cidr.embedded.openocd.conf.type">
-        <watch expression="core_lock" />
-        <watch expression="spi_accel" />
-        <watch expression="spi_gyro" />
-        <watch expression="_spi[cs]" />
-        <watch expression="imu" />
-        <watch expression="error" />
-        <watch expression="_data_buf[11]" />
-        <watch expression="_data_buf[12]" />
-        <watch expression="dtrd" />
+        <watch expression="QEKF_INS" />
       </configuration>
     </watches-manager>
   </component>

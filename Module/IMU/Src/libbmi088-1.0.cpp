@@ -1,194 +1,176 @@
 /*
-* @Description: A instantiation of IMU-BMI088
-* @Author: qianwan
-* @Date: 2023-12-22 12:00:00
+ * @Description: A instantiation of IMU-BMI088
+ * @Author: qianwan
+ * @Date: 2023-12-22 12:00:00
  * @LastEditTime: 2023-12-23 00:28:21
  * @LastEditors: qianwan
-*/
+ */
 
- /******************************************************************************
-  * @attention
-  * BSD 3-Clause License
-  * Copyright (c) 2023, Qianwan.Jin
-  * Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************/
- /*Version 1.0*/
- /*Stepper 0.0*/
-#include <cstring>
+/******************************************************************************
+ * @attention
+ * BSD 3-Clause License
+ * Copyright (c) 2023, Qianwan.Jin
+ * Copyright (c) 2023 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************/
+/*Version 1.0*/
+/*Stepper 0.0*/
 #include "libbmi088-1.0.hpp"
+#include <cstring>
+
+
 using namespace BMI088;
-uint8_t cBMI088::ReadReg(uint8_t reg, BMI088_CS cs)
-{
-    _data_buf[0]=reg|0x80;
-    _spi[cs]->CS_Enable();
-    _spi[cs]->ExchangeByte(_data_buf,_data_buf+10,2);
-    _spi[cs]->CS_Disable();
-    return _data_buf[11];
+
+uint8_t cBMI088::ReadReg(uint8_t reg, BMI088_CS cs) {
+  _data_buf[0] = reg | 0x80;
+  _spi[cs]->CS_Enable();
+  _spi[cs]->ExchangeByte(_data_buf, _data_buf + 10, 2 + cs);
+  _spi[cs]->CS_Disable();
+  return _data_buf[11 + cs];
 }
 
-uint8_t cBMI088::WriteReg(uint8_t reg, uint8_t data, BMI088_CS cs)
-{
-    _data_buf[0]=reg;
-    _data_buf[1]=data;
-    _spi[cs]->CS_Enable();
-    _spi[cs]->ExchangeByte(_data_buf,_data_buf+10,2);
-    _spi[cs]->CS_Disable();
-    return 0;
+uint8_t cBMI088::WriteReg(uint8_t reg, uint8_t data, BMI088_CS cs) {
+  _data_buf[0] = reg;
+  _data_buf[1] = data;
+  _spi[cs]->CS_Enable();
+  _spi[cs]->ExchangeByte(_data_buf, _data_buf + 10, 2);
+  _spi[cs]->CS_Disable();
+  return 0;
 }
 
-uint8_t cBMI088::UpdateTem()
-{
-    _data_buf[0] = 0x22|0x80;
-    _spi[CS_ACCEL]->CS_Enable();
-    _data_buf[0] = _spi[CS_ACCEL]->ExchangeByte(_data_buf,_data_buf+10,3);
-    _spi[CS_ACCEL]->CS_Disable();
+uint8_t cBMI088::UpdateTem() {
+  _data_buf[0] = 0x22 | 0x80;
+  _spi[CS_ACCEL]->CS_Enable();
+  _data_buf[0] = _spi[CS_ACCEL]->ExchangeByte(_data_buf, _data_buf + 10, 4);
+  _spi[CS_ACCEL]->CS_Disable();
 
-    /*Check spi communication*/
-    if(_data_buf[0]!=0){return 0x01;}
-    uint16_t tmp = (_data_buf[11]<<3)|(_data_buf[12]>>5);
-    if(tmp>1023){
-        tmp -= 2048;
-    }
-    _temperature = tmp*0.125f + 23.0f;
-    return 0;
+  /*Check spi communication*/
+  if (_data_buf[0] != 0) {
+    return 0x01;
+  }
+  uint16_t tmp = (_data_buf[12] << 3) | (_data_buf[13] >> 5);
+  if (tmp > 1023) {
+    tmp -= 2048;
+  }
+  _temperature = tmp * 0.125f + 23.0f;
+  return 0;
 }
 
-uint8_t cBMI088::UpdateAccel()
-{
-    _data_buf[0] = 0x12|0x80;
-    _spi[CS_ACCEL]->CS_Enable();
-    _data_buf[0] = _spi[CS_ACCEL]->ExchangeByte(_data_buf,_data_buf+10,7);
-    _spi[CS_ACCEL]->CS_Disable();
+uint8_t cBMI088::UpdateAccel() {
+  _data_buf[0] = 0x12 | 0x80;
+  _spi[CS_ACCEL]->CS_Enable();
+  _data_buf[0] = _spi[CS_ACCEL]->ExchangeByte(_data_buf, _data_buf + 10, 8);
+  _spi[CS_ACCEL]->CS_Disable();
 
-    /*Check spi communication*/
-    if(_data_buf[0]!=0){return 0x01;}
+  /*Check spi communication*/
+  if (_data_buf[0] != 0) {
+    return 0x01;
+  }
 
-    _accel[0] = (int16_t)(_data_buf[12]<<8) | _data_buf[11];
-    _accel[1] = (int16_t)(_data_buf[14]<<8) | _data_buf[13];
-    _accel[2] = (int16_t)(_data_buf[16]<<8) | _data_buf[15];
-    return 0;
+  _accel[0] = (int16_t)(_data_buf[13] << 8) | _data_buf[12];
+  _accel[1] = (int16_t)(_data_buf[15] << 8) | _data_buf[14];
+  _accel[2] = (int16_t)(_data_buf[17] << 8) | _data_buf[16];
+  return 0;
 }
 
-uint8_t cBMI088::UpdateGyro()
-{
-    _data_buf[0] = 0x02|0x80;
-    _spi[CS_GYRO]->CS_Enable();
-    _data_buf[0] = _spi[CS_GYRO]->ExchangeByte(_data_buf,_data_buf+10,7);
-    _spi[CS_GYRO]->CS_Disable();
+uint8_t cBMI088::UpdateGyro() {
+  _data_buf[0] = 0x02 | 0x80;
+  _spi[CS_GYRO]->CS_Enable();
+  _data_buf[0] = _spi[CS_GYRO]->ExchangeByte(_data_buf, _data_buf + 10, 7);
+  _spi[CS_GYRO]->CS_Disable();
 
-    /*Check spi communication*/
-    if(_data_buf[7]!=0){return 0x01;}
+  /*Check spi communication*/
+  if (_data_buf[0] != 0) {
+    return 0x01;
+  }
 
-    _gyro[0] = _data_buf[12]<<8 | _data_buf[11];
-    _gyro[1] = _data_buf[14]<<8 | _data_buf[13];
-    _gyro[2] = _data_buf[16]<<8 | _data_buf[15];
-    return 0;
+  _gyro[0] = (int16_t)(_data_buf[12] << 8) | _data_buf[11];
+  _gyro[1] = (int16_t)(_data_buf[14] << 8) | _data_buf[13];
+  _gyro[2] = (int16_t)(_data_buf[16] << 8) | _data_buf[15];
+  return 0;
 }
 
-uint8_t cBMI088::UpdateAll(void)
-{
-    UpdateAccel();
-    UpdateGyro();
-    UpdateTem();
-    return 0;
+uint8_t cBMI088::UpdateAll(void) {
+  UpdateAccel();
+  UpdateGyro();
+  UpdateTem();
+  return 0;
 }
 
-void cBMI088::GetAccel(uint8_t* pdata)
-{
-    memcpy(pdata,_accel,6);
-}
+void cBMI088::GetAccel(uint8_t *pdata) { memcpy(pdata, _accel, 6); }
 
-void cBMI088::GetGyro(uint8_t* pdata)
-{
-    memcpy(pdata,_gyro,6);
-}
+void cBMI088::GetGyro(uint8_t *pdata) { memcpy(pdata, _gyro, 6); }
 
-float cBMI088::GetTem()
-{
-    return _temperature;
-}
+float cBMI088::GetTem() { return _temperature; }
 
 /*A example of configuration*/
-// static void IMU_Init(cICM42688* icm42688)
-// {
-// 	uint8_t buf = 0;
-// 	/*Set at Bank0*/
-// 	icm42688->WriteReg(0x76,0x00);
-// 	/*Soft reset*/
-// 	icm42688->WriteReg(0x11,0x01);
-//     tx_thread_sleep(5);
-// 	/*Read interrput flag to set spi protocol*/
-// 	buf = icm42688->ReadReg(0x2D);
-
-// 	/*Set at Bank0*/
-// 	icm42688->WriteReg(0x76,0x00);
-// 	/*Interrupt pin set*/
-// 	icm42688->WriteReg(0x14,0x12);//INT1 INT2 Pulse, Low is available
-// 	/*Set gyro*/
-// 	icm42688->WriteReg(0x4F,0x06);//2000dps 1KHz
-// 	/*Set accel*/
-// 	icm42688->WriteReg(0x50,0x06);//16G 1KHz
-
-// 	/*INT_CONFIG0*/
-// 	icm42688->WriteReg(0x63,0x00);//Null
-// 	/*INT_CONFIG1*/
-// 	icm42688->WriteReg(0x64,0x00);//Enable interrupt pin
-// 	/*INT_SOURCE0*/
-// 	icm42688->WriteReg(0x65,0x08);//DRDY INT1
-// 	/*INT_SOURCE1*/
-// 	icm42688->WriteReg(0x66,0x00);//Null
-// 	/*INT_SOURCE3*/
-// 	icm42688->WriteReg(0x68,0x00);//Null
-// 	/*INT_SOURCE3*/
-// 	icm42688->WriteReg(0x69,0x00);//Null
-
-// /*****Anti-Aliasing Filter@536Hz*****/
-
-// 	/*GYRO Anti-Aliasing Filter config*/
-// 	/*Set to Bank1*/
-// 	icm42688->WriteReg(0x76,0x01);
-// 	/*Config anti-aliasing-filter of gyro*/
-// 	icm42688->WriteReg(0x0B,0xA0);//Enable AAF and Notch filter
-// 	icm42688->WriteReg(0x0C,0x0C);//GYRO_AAF_DELT 12 (default 13)
-// 	icm42688->WriteReg(0x0D,0x90);//GYRO_AAF_DELTSQR 144 (default 170)
-// 	icm42688->WriteReg(0x0E,0x80);//GYRO_AAF_BITSHIFT 8 (default 8)
-
-// 	/*ACCEL Anti-Aliasing Filter config*/
-// 	/*Set to bank2*/
-// 	icm42688->WriteReg(0x76,0x02);
-// 	/*Config anti-aliasing-filter of accel*/
-// 	icm42688->WriteReg(0x03,0x18);//Enable Notch filter ACCEL_AFF_DELT 12 (default 24)
-// 	icm42688->WriteReg(0x04,0x90);//ACCEL_AFF_DELTSQR 144 (default 64)
-// 	icm42688->WriteReg(0x05,0x80);//ACCEL_AAF_BITSHIFT 8 (default 6)
-
-// /********User filter********/
-
-// 	/*Set to bank 0*/
-// 	icm42688->WriteReg(0x76,0x00);
-// 	/*Set filters order*/
-// 	icm42688->WriteReg(0x51,0x80);//Temp@20Hz GYRO_UI_FILTER@1nd-order
-// 	icm42688->WriteReg(0x53,0x0D);//GYRO_UI_FILTER@1nd-order
-// 	/*User filter set*/
-// 	icm42688->WriteReg(0x52,0xFF);//GYRO/ACCLE_UI_FILT_BW@0 -3BW=2096.3Hz NBW=2204.6Hz GroupLatancy=0.2ms
-
-
-// /*****Set to normal mode*****/
-//  /*Config mcu gpio interrupt*/
-// 	NVIC_EnableIRQ(EXTI15_10_IRQn);
-// 	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_11);
-// 	LL_EXTI_EnableIT_0_31(LL_EXTI_LINE_11);
-// 	NVIC_EnableIRQ(EXTI1_IRQn);
-// 	LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_1);
-// 	LL_EXTI_EnableIT_0_31(LL_EXTI_LINE_1);
-
-// 	/*Set to bank0*/
-// 	icm42688->WriteReg(0x76,0x00);
-// 	/*Set power manager*/
-// 	icm42688->WriteReg(0x4E,0x0F);//ACC GYRO enable at LowNoise Mode
+// static uint8_t BMI088_Config(cBMI088 &bmi088) {
+//     /*Begin ACC SPI Communication*/
+//     bmi088.ReadReg(0x00, BMI088_CS::CS_ACCEL);
+//     tx_thread_sleep(1);
+//     /*Reset Sensor*/
+//     bmi088.WriteReg(0x14, 0xB6, BMI088_CS::CS_GYRO);
+//     bmi088.WriteReg(0x7E, 0xB6, BMI088_CS::CS_ACCEL);
+//     tx_thread_sleep(100);
+//     /*Begin ACC SPI Communication*/
+//     bmi088.ReadReg(0x00, BMI088_CS::CS_ACCEL);
+//     tx_thread_sleep(1);
+//     bmi088.ReadReg(0x00, BMI088_CS::CS_ACCEL);
+//     tx_thread_sleep(1);
+//
+//
+//     /*Check Chip Connection*/
+//     while (bmi088.ReadReg(0x00, BMI088_CS::CS_GYRO) != 0x0F) {
+//         return 0x01;
+//         //ERROR
+//     }
+//     /*Check Chip Connection*/
+//     while (bmi088.ReadReg(0x00, BMI088_CS::CS_ACCEL) != 0x1E) {
+//         return 0x02;
+//         //ERROR
+//     }
+//     tx_thread_sleep(10);
+//
+//     /*Start to config IMU*/
+//     /*Enable accelmemter */
+//     bmi088.WriteReg(0x7D, 0x04, BMI088_CS::CS_ACCEL);
+//     tx_thread_sleep(10);
+//     /*Normal Mode*/
+//     bmi088.WriteReg(0x7C, 0x00, BMI088_CS::CS_ACCEL);
+//     tx_thread_sleep(10);
+//     /*Gyro range 1000dps*/
+//     bmi088.WriteReg(0x0F, 0x01, BMI088_CS::CS_GYRO);
+//     /*Accel range +-12G */
+//     bmi088.WriteReg(0x41, 0x02, BMI088_CS::CS_ACCEL);
+//     tx_thread_sleep(1);
+//     /*Gyro ODR 1KHz BW 116Hz*/
+//     bmi088.WriteReg(0x10, 0x02, BMI088_CS::CS_GYRO);
+//     /*Accel ODR 1.6KHz BW 280Hz*/
+//     bmi088.WriteReg(0x40, 0xAC, BMI088_CS::CS_ACCEL);
+//     tx_thread_sleep(1);
+//     /*Gyro INT DRY*/
+//     bmi088.WriteReg(0x15, 0x80, BMI088_CS::CS_GYRO);
+//     tx_thread_sleep(1);
+//     /*Gyro INT3 PP AL*/
+//     bmi088.WriteReg(0x16, 0x0C, BMI088_CS::CS_GYRO);
+//     /*Accel INT1 PP AL*/
+//     bmi088.WriteReg(0x53, 0x08, BMI088_CS::CS_ACCEL);
+//     tx_thread_sleep(1);
+//     /*Gyro DRY pin to INT3*/
+//     bmi088.WriteReg(0x18, 0x01, BMI088_CS::CS_GYRO);
+//     /*Accel DRY pin to INT1*/
+//     bmi088.WriteReg(0x58, 0x04, BMI088_CS::CS_ACCEL);
+//     tx_thread_sleep(1);
+//
+//     /*Enable IDLE*/
+//     LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_4);
+//     LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_5);
+//     NVIC_EnableIRQ(EXTI4_IRQn);//ACC
+//     NVIC_EnableIRQ(EXTI9_5_IRQn);//GYRO
+//     return 0;
 // }

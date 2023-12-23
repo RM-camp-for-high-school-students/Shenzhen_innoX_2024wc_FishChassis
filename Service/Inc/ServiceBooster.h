@@ -7,8 +7,7 @@
  */
 #ifndef SERVICE_BOOSTER_H
 #define SERVICE_BOOSTER_H
-#include "main.h"
-
+#include "stdint.h"
 #ifdef __cplusplus
 extern "C" {
 void Service_Booster(void);

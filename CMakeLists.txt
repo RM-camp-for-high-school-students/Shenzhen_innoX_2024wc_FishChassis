@@ -53,8 +53,10 @@ endif ()
 include_directories(Core/Inc Drivers/STM32F4xx_HAL_Driver/Inc Drivers/STM32F4xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F4xx/Include Drivers/CMSIS/Include AZURE_RTOS/App USBX/App USBX/Target Middlewares/ST/usbx/common/core/inc/ Middlewares/ST/usbx/ports/generic/inc/ Middlewares/ST/usbx/common/usbx_device_classes/inc/ Middlewares/ST/threadx/common/inc/ Middlewares/ST/threadx/ports/cortex_m4/gnu/inc/ Middlewares/ST/usbx/common/usbx_stm32_device_controllers/)
 
 # Include arm_math head files
+#include_directories(DSP/Include DSP/Include/dsp DSP/PrivateInclude)
 include_directories(DSP/Include DSP/Include/dsp)
-link_directories(DSP)
+# Include BSP head files
+include_directories(Module/BSP/Inc)
 # Include PSAI head files
 include_directories(Module/PSAI/Inc)
 # Include mavlink head files
@@ -89,10 +91,12 @@ add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 # Add OneMessage
 add_subdirectory(Module/OneMessage om)
 target_include_directories(${PROJECT_NAME}.elf PUBLIC $<TARGET_PROPERTY:OneMessage,INCLUDE_DIRECTORIES>)
+target_link_libraries(${PROJECT_NAME}.elf PUBLIC OneMessage)
 
 # Link arm_math
-target_link_libraries(${PROJECT_NAME}.elf PUBLIC ${CMAKE_SOURCE_DIR}/DSP/libCMSISDSP.a OneMessage)
-
+#add_subdirectory(DSP/Source dsp)
+#target_link_libraries(${PROJECT_NAME}.elf PUBLIC CMSISDSP)
+target_link_libraries(${PROJECT_NAME}.elf PUBLIC ${PROJECT_SOURCE_DIR}/DSP/libCMSISDSP.a)
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)

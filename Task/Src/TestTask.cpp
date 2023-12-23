@@ -84,7 +84,6 @@ om_status_t call_function(om_msg_t* msg, void* arg){
     for (;;) {
         /* 解析接收到的数据 */
         tx_semaphore_get(&topic_test,TX_WAIT_FOREVER);
-
         dc = dc==1999?0:1999;
         LL_TIM_OC_SetCompareCH1(TIM5, dc);
         LL_TIM_OC_SetCompareCH2(TIM5, dc);

@@ -55,8 +55,8 @@ void Task_Booster()
 	 	0x0000,
 	 	Test01ThreadStack,
 	 	sizeof(Test01ThreadStack),
-	 	5,
-	 	5,
+	 	6,
+	 	6,
 	 	TX_NO_TIME_SLICE,
 	 	TX_AUTO_START);
 
@@ -67,8 +67,8 @@ void Task_Booster()
 		0x0000,
 		Test02ThreadStack,
 		sizeof(Test02ThreadStack),
-		5,
-		5,
+		6,
+		6,
 		TX_NO_TIME_SLICE,
 		TX_AUTO_START);
 

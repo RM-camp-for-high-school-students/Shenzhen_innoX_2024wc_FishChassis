@@ -27,8 +27,8 @@
 
 namespace BMI088 {
     enum BMI088_CS {
-        CS_ACCEL = 0,
-        CS_GYRO = 1,
+        CS_GYRO = 0,
+        CS_ACCEL = 1,
     };
 
     class cBMI088 : public IMUA::cIMUA {

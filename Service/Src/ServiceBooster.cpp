@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: qianwan
+ * @Date: 2023-12-20 16:01:58
+ * @LastEditTime: 2023-12-23 19:15:00
+ * @LastEditors: qianwan
+ */
 #include "app_threadx.h"
 #include "DL_F407.h"
 #include "ServiceBooster.h"
@@ -11,7 +18,7 @@ SRAM_SET_CCM TX_BYTE_POOL MsgPool;
 SRAM_SET_CCM UCHAR Msg_PoolBuf[4096] = {0};
 
 SRAM_SET_CCM TX_BYTE_POOL MathPool;
-SRAM_SET_CCM UCHAR Math_PoolBuf[4096] = {0};
+SRAM_SET_CCM UCHAR Math_PoolBuf[40960] = {0};
 //extern TX_THREAD DebugThread;
 //extern uint8_t DebugThreadStack[256];
 //extern void DebugThreadFun(ULONG initial_input);
@@ -19,8 +26,6 @@ SRAM_SET_CCM UCHAR Math_PoolBuf[4096] = {0};
 extern TX_THREAD IMUThread;
 extern uint8_t IMUThreadStack[2048];
 extern void IMUThreadFun(ULONG initial_input);
-
-
 
 void Service_Booster(void) {
     /**********Memory pool in ram***********/
@@ -79,8 +84,8 @@ void Service_Booster(void) {
 		0x0000,
         IMUThreadStack,
 		sizeof(IMUThreadStack),
-		5,
-		5,
+		3,
+		3,
 		TX_NO_TIME_SLICE,
 		TX_AUTO_START);
 
