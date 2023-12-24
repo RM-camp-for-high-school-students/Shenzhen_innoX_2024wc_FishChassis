@@ -3,18 +3,22 @@
 #include "DL_F407.h"
 #include "DWT.hpp"
 #include "om.h"
+#include "Flash.hpp"
 #include "Filter.hpp"
 #include "FishMessage.h"
 #include "ServiceIMU.h"
 #include "libspi-i-hal-1.0.hpp"
+#include "libpid-i-1.0.hpp"
 #include "libbmi088-1.0.hpp"
 #include "QuaternionEKF.h"
 
 using namespace SPI;
 using namespace BMI088;
 using namespace IMUA;
+using namespace PID;
 
 static uint8_t BMI088_Config(cBMI088 &bmi088);
+
 static cIMUA *imu_handle = nullptr;
 
 SRAM_SET_CCM TX_THREAD IMUThread;
@@ -22,22 +26,63 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
 
 [[noreturn]] void IMUThreadFun(ULONG initial_input) {
     cDWT dwt;
+    bool calibrate = !LL_GPIO_IsInputPinSet(KEY_GPIO_Port,KEY_Pin);
     int16_t accel[3];
     int16_t gyro[3];
     float accel_f[3];
     float gyro_f[3];
+    float gyro_offset[3] = {0};
     float quaternion[4] = {1.0f, 0.0f, 0.0f, 0.0f};
     cFilterBTW2_100Hz filter[3];
     Msg_Ins_t msg_ins;
     /* INS Topic */
-    om_topic_t *ins_topic = om_config_topic(NULL, "CA", "INS",sizeof(Msg_Ins_t));
+    om_topic_t *ins_topic = om_config_topic(NULL, "CA", "INS", sizeof(Msg_Ins_t));
+    flashCore.flash_memcpy(Flash::Element_ID_GYRO, (uint8_t *) gyro_offset);
 
     cSPI spi_accel(&hspi1, CS1_ACCLE_GPIO_Port, CS1_ACCLE_Pin, UINT32_MAX);
     cSPI spi_gyro(&hspi1, CS1_GYRO_GPIO_Port, CS1_GYRO_Pin, UINT32_MAX);
     cBMI088 bmi088(&spi_accel, &spi_gyro);
     imu_handle = &bmi088;
-
     BMI088_Config(bmi088);
+
+    if (calibrate) {
+        /*Borrow this variable*/
+        accel[0] = 0;
+        if(!LL_TIM_IsEnabledCounter(TIM4)){
+            LL_TIM_CC_EnableChannel(TIM4,LL_TIM_CHANNEL_CH3);
+            LL_TIM_EnableAllOutputs(TIM4);
+            LL_TIM_EnableCounter(TIM4);
+        }
+        LL_TIM_OC_SetCompareCH3(TIM4,299);
+        tx_thread_sleep(300);
+        LL_TIM_OC_SetCompareCH3(TIM4,0);
+
+        gyro_offset[0] = 0.0f;
+        gyro_offset[1] = 0.0f;
+        gyro_offset[2] = 0.0f;
+
+        while (bmi088.GetTem()<49.0f){
+            tx_thread_sleep(100);
+        }
+        tx_thread_sleep(5000);
+        /*Calibrate Gyro for 30 s*/
+        for (uint16_t i = 0; i < 3000; i++) {
+            bmi088.GetGyro((uint8_t *) gyro);
+            gyro_offset[0] -= (float)gyro[0]/3000.0f;
+            gyro_offset[1] -= (float)gyro[1]/3000.0f;
+            gyro_offset[2] -= (float)gyro[2]/3000.0f;
+            if(i%50==0){
+                accel[0] = accel[0] == 0 ? 299 : 0;
+                LL_TIM_OC_SetCompareCH3(TIM4, accel[0]);
+            }
+            tx_thread_sleep(10);
+        }
+        flashCore.config_data(Flash::Element_ID_GYRO, (uint8_t *) gyro_offset, sizeof(gyro_offset));
+        __disable_interrupts();
+        flashCore.rebuild();
+        NVIC_SystemReset();
+    }
+
     IMU_QuaternionEKF_Init(10, 0.001, 10000000, 1);
     tx_thread_sleep(1000);
     dwt.update();
@@ -54,19 +99,25 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
         accel_f[1] = filter[1].Update(accel_f[1]);
         accel_f[2] = filter[2].Update(accel_f[2]);
 
-        gyro_f[0] = gyro[0] * LSB_GYRO_16B_1000_R;
-        gyro_f[1] = gyro[1] * LSB_GYRO_16B_1000_R;
-        gyro_f[2] = gyro[2] * LSB_GYRO_16B_1000_R;
+        gyro_f[0] = ((float)gyro[0] + gyro_offset[0]) * LSB_GYRO_16B_1000_R;
+        gyro_f[1] = ((float)gyro[1] + gyro_offset[1]) * LSB_GYRO_16B_1000_R;
+        gyro_f[2] = ((float)gyro[2] + gyro_offset[2]) * LSB_GYRO_16B_1000_R;
 
-        IMU_QuaternionEKF_Update(quaternion, gyro_f[0], gyro_f[1], gyro_f[2], accel_f[0], accel_f[1], accel_f[2], dwt.dt_sec());
+        IMU_QuaternionEKF_Update(quaternion, gyro_f[0], gyro_f[1], gyro_f[2], accel_f[0], accel_f[1], accel_f[2],
+                                 dwt.dt_sec());
 
         /*Message*/
         msg_ins.timestamp = tx_time_get();
         memcpy(msg_ins.quaternion, quaternion, sizeof(quaternion));
         /*Y-P-R*/
-        msg_ins.Euler[0] = atan2f(2.0f * (quaternion[0] * quaternion[3] + quaternion[1] * quaternion[2]), 2.0f * (quaternion[0] * quaternion[0] + quaternion[1] * quaternion[1]) - 1.0f) * 57.295779513f;
-        msg_ins.Euler[1] = atan2f(2.0f * (quaternion[0] * quaternion[1] + quaternion[2] * quaternion[3]), 2.0f * (quaternion[0] * quaternion[0] + quaternion[3] * quaternion[3]) - 1.0f) * 57.295779513f;
-        msg_ins.Euler[2] = asinf(-2.0f * (quaternion[1] * quaternion[3] - quaternion[0] * quaternion[2])) * 57.295779513f;
+        msg_ins.Euler[0] = atan2f(2.0f * (quaternion[0] * quaternion[3] + quaternion[1] * quaternion[2]),
+                                  2.0f * (quaternion[0] * quaternion[0] + quaternion[1] * quaternion[1]) - 1.0f) *
+                           57.295779513f;
+        msg_ins.Euler[1] = atan2f(2.0f * (quaternion[0] * quaternion[1] + quaternion[2] * quaternion[3]),
+                                  2.0f * (quaternion[0] * quaternion[0] + quaternion[3] * quaternion[3]) - 1.0f) *
+                           57.295779513f;
+        msg_ins.Euler[2] =
+                asinf(-2.0f * (quaternion[1] * quaternion[3] - quaternion[0] * quaternion[2])) * 57.295779513f;
 
         om_publish(ins_topic, &msg_ins, sizeof(msg_ins), true, false);
     }
@@ -76,20 +127,26 @@ SRAM_SET_CCM TX_THREAD IMUTemThread;
 SRAM_SET_CCM uint8_t IMUTemThreadStack[1024] = {0};
 
 [[noreturn]] void IMUTemThreadFun(ULONG initial_input) {
-    float temperature;
+    cDWT dwt;
+    PID_Inc_f pid(100.0f, 8.0f, 30.0f, 0.0f, 0.32, 1999, 399, false, 0, true, 0.5f);
     LL_TIM_EnableAllOutputs(TIM10);
     LL_TIM_CC_EnableChannel(TIM10, LL_TIM_CHANNEL_CH1);
-    LL_TIM_SetCounter(TIM10, 1999);
+    LL_TIM_OC_SetCompareCH1(TIM10, 1999);
     LL_TIM_EnableCounter(TIM10);
     tx_thread_sleep(3000);
-    LL_TIM_SetCounter(TIM10, 0);
     /*Assert*/
-    if(imu_handle == nullptr){
+    if (imu_handle == nullptr) {
+        LL_TIM_OC_SetCompareCH1(TIM10, 0);
         tx_thread_suspend(&IMUTemThread);
     }
+    while (imu_handle->GetTem() < 47.5f) {
+        tx_thread_sleep(320);
+    }
+    pid.SetRef(50.0f);
+    dwt.update();
     for (;;) {
-
-        tx_thread_sleep(1000);
+        tx_thread_sleep(320);
+        LL_TIM_OC_SetCompareCH1(TIM10, (uint32_t) pid.Calculate(imu_handle->GetTem(), dwt.dt_sec()));
     }
 }
 

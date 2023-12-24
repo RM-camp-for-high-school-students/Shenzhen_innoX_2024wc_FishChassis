@@ -18,10 +18,10 @@
 extern UX_SLAVE_CLASS_CDC_ACM *cdc_acm;
 
 /* Data received are stored in this buffer */
-SRAM_SET_CCM uint8_t usb_rx_buf[USB_MAX_LEN];
+SRAM_SET_CCM_UNINT uint8_t usb_rx_buf[USB_MAX_LEN];
 
 /* Data to send over USB CDC are stored in this buffer   */
-SRAM_SET_CCM uint8_t usb_tx_buf[USB_MAX_LEN] = {0x01, 0x02, 0x03};
+SRAM_SET_CCM_UNINT uint8_t usb_tx_buf[USB_MAX_LEN] = {0x01, 0x02, 0x03};
 
 /**
   * @brief  Function implementing usbx_cdc_acm_thread_entry.
@@ -63,7 +63,6 @@ SRAM_SET_CCM uint8_t usb_tx_buf[USB_MAX_LEN] = {0x01, 0x02, 0x03};
     }
 }
 
-
 /**
   * @brief  Function implementing usbx_cdc_acm_write_thread_entry.
   * @param  thread_input: Not used
@@ -81,7 +80,7 @@ SRAM_SET_CCM uint8_t usb_tx_buf[USB_MAX_LEN] = {0x01, 0x02, 0x03};
     om_suber_t *suber_ins = om_subscribe(om_find_topic("INS", UINT32_MAX));
 
     /*Wait for mutex*/
-    tx_thread_sleep(100);
+    tx_thread_sleep(5000);
 
     while (true) {
         /* Check if device is configured */
@@ -93,7 +92,7 @@ SRAM_SET_CCM uint8_t usb_tx_buf[USB_MAX_LEN] = {0x01, 0x02, 0x03};
 #endif
 
             om_suber_export(suber_ins, &msg_ins, false);
-            len = fishPrintf(usb_tx_buf, "YPR:%.2f %.2f %.2f %d\r\n", msg_ins.Euler[0], msg_ins.Euler[1],
+            len = fishPrintf(usb_tx_buf, "Y=%.2f,R=%.2f,P=%.2f,S=%d\r\n", msg_ins.Euler[0], msg_ins.Euler[1],
                              msg_ins.Euler[2], msg_ins.timestamp);
             ux_device_class_cdc_acm_write(cdc_acm, (UCHAR *) usb_tx_buf, len, &actual_length);
             tx_thread_sleep(100);

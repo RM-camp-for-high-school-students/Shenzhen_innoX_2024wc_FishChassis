@@ -105,6 +105,7 @@ int main(void)
   MX_CAN1_Init();
   MX_CAN2_Init();
   MX_USB_OTG_FS_PCD_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */

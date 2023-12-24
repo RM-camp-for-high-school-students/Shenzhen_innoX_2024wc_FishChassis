@@ -47,7 +47,7 @@ MEMORY
 {
   CCMRAM    (xrw)    : ORIGIN = 0x10000000,   LENGTH = 64K
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 128K
-  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 1024K
+  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 896K    /*Last Sector used to storage config paramaters*/
 }
 
 /* Sections */
@@ -148,14 +148,13 @@ SECTIONS
 
   } >RAM AT> FLASH
 
-  _siccmram = LOADADDR(.ccmram);
-
   /* CCM-RAM section
   *
   * IMPORTANT NOTE!
   * If initialized variables will be placed in this section,
   * the startup code needs to be modified to copy the init-values.
   */
+  _siccmram = LOADADDR(.ccmram);
   .ccmram :
   {
     . = ALIGN(4);
@@ -166,6 +165,18 @@ SECTIONS
     . = ALIGN(4);
     _eccmram = .;       /* create a global symbol at ccmram end */
   } >CCMRAM AT> FLASH
+
+  /*This part of veriables will get into CCMRAM but not flash*/
+  .ccmram_uninit :
+  {
+    . = ALIGN(4);
+    _sccmram_uninit = .;       /* create a global symbol at ccmram start */
+    *(.ccmram_uninit)
+    *(.ccmram_uninit*)
+
+    . = ALIGN(4);
+    _eccmram_uninit = .;       /* create a global symbol at ccmram end */
+  } >CCMRAM
 
   /* Uninitialized data section into "RAM" Ram type memory */
   . = ALIGN(4);

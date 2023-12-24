@@ -23,13 +23,21 @@
   <component name="ChangeListManager">
     <list default="true" id="babba83a-2a78-4ae1-bf29-388873eadff8" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/IMU/Inc/QuaternionEKF.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/IMU/Inc/QuaternionEKF.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/IMU/Src/QuaternionEKF.c" beforeDir="false" afterPath="$PROJECT_DIR$/Module/IMU/Src/QuaternionEKF.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/PSAI/Inc/libimu-a-1.0.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/PSAI/Inc/libimu-a-1.0.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists_template.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/DL_F407.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/DL_F407.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/tim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/tim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Startup/startup_stm32f407ighx.s" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Startup/startup_stm32f407ighx.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Doc/system_layer.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/Doc/system_layer.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Doc/system_layer.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Doc/system_layer.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FishChassis.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/FishChassis.ioc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/PSAI/Inc/libpid-i-1.0.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Module/PSAI/Inc/libpid-i-1.0.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/STM32F407IGHX_FLASH.ld" beforeDir="false" afterPath="$PROJECT_DIR$/STM32F407IGHX_FLASH.ld" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/Src/ServiceIMU.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceIMU.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/Src/ServiceMsgCDC.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceMsgCDC.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/Src/TestTask.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Src/TestTask.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,17 +119,17 @@
     </key>
   </component>
   <component name="RunManager" selected="OpenOCD 下载并运行.OCD FishChassis">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FishChassis.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="FishChassis.elf" CONFIG_NAME="RelWithDebInfo-MinGW-STM32" RUN_TARGET_PROJECT_NAME="FishChassis" RUN_TARGET_NAME="FishChassis.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="OneMessage" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="OneMessage" CONFIG_NAME="RelWithDebInfo-MinGW-STM32">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -164,6 +172,7 @@
       <workItem from="1703262502445" duration="6946000" />
       <workItem from="1703299664061" duration="13894000" />
       <workItem from="1703345319177" duration="11825000" />
+      <workItem from="1703388894546" duration="25294000" />
     </task>
     <servers />
   </component>
@@ -178,9 +187,8 @@
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="com.jetbrains.cidr.embedded.openocd.conf.type">
-        <watch expression="QEKF_INS" />
-        <watch expression="dwt" />
-        <watch expression="SystemCoreClock" />
+        <watch expression="flashCore" />
+        <watch expression="bmi088" />
       </configuration>
     </watches-manager>
   </component>

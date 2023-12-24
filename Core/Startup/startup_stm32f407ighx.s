@@ -50,6 +50,8 @@ defined in linker script */
 .word _sccmram
 .word _eccmram
 
+.word _sccmram_uninit
+.word _eccmram_uninit
 
 /**
  * @brief  This is the code that gets called when the processor first
@@ -116,6 +118,21 @@ FillZerobss:
 LoopFillZerobss:
   cmp r2, r4
   bcc FillZerobss
+
+
+/* Zero fill the ccm-unint segment. */
+  ldr r2, =_sccmram_uninit
+  ldr r4, =_eccmram_uninit
+  movs r3, #0
+  b LoopFillZerobss_CCM
+
+FillZerobss_CCM:
+  str  r3, [r2]
+  adds r2, r2, #4
+
+LoopFillZerobss_CCM:
+  cmp r2, r4
+  bcc FillZerobss_CCM
 
 /* Call static constructors */
     bl __libc_init_array

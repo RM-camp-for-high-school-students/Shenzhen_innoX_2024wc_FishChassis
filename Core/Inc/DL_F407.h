@@ -5,11 +5,13 @@ extern "C" {
 #endif
 /*
 	使用自定分散加载文件时
-	不指定: 使用普通FLASH
-	特殊指定: 使用CCM-FALSH
+	不指定: 使用普通RAM
+	SRAM_SET_CCM: 使用CCM-RAM 并保存bss等字段进入flash
+    SRAM_SET_CCM_UNINT: 使用CCM-RAM 但不保存bss等字段进入flash
 */
-#define SRAM_SET_CCM      __attribute__((section(".ccmram")))
-
+#define SRAM_SET_CCM        __attribute__((section(".ccmram")))
+#define SRAM_SET_CCM_UNINT  __attribute__((section(".ccmram_uninit")))
+//#define SRAM_SET_CCM_UNINT  __attribute__((section(".ccmram")))
 #ifdef __cplusplus
 }
 #endif
