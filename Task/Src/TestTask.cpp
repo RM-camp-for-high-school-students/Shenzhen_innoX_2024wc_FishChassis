@@ -62,22 +62,13 @@ om_status_t call_function(om_msg_t* msg, void* arg){
     LL_TIM_CC_EnableChannel(TIM5, LL_TIM_CHANNEL_CH3);
     LL_TIM_EnableCounter(TIM5);
 
-    tx_semaphore_create(
-    &topic_test,
-    (CHAR*)"topic_test",
-    0
-    );
-
-    om_suber_t* sub = om_config_suber(NULL,"dt",call_function,NULL,om_find_topic("TEST", UINT32_MAX));
-
-    uint32_t num = 0;
-    uint32_t num_last = 0;
     uint32_t dc = 0;
 
     for (;;) {
         /* 解析接收到的数据 */
-        tx_semaphore_get(&topic_test,TX_WAIT_FOREVER);
-        dc = dc==1999?0:1999;
+        tx_thread_sleep(500);
+        dc = dc==0?499:0;
+
         LL_TIM_OC_SetCompareCH1(TIM5, dc);
         LL_TIM_OC_SetCompareCH2(TIM5, dc);
         LL_TIM_OC_SetCompareCH3(TIM5, dc);

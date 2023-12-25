@@ -74,13 +74,11 @@ SRAM_SET_CCM_UNINT uint8_t usb_tx_buf[USB_MAX_LEN] = {0x01, 0x02, 0x03};
     device = &_ux_system_slave->ux_system_slave_device;
     UX_PARAMETER_NOT_USED(thread_input);
 
-    /*INS Message*/
-    uint32_t len;
-    Msg_Ins_t msg_ins;
-    om_suber_t *suber_ins = om_subscribe(om_find_topic("INS", UINT32_MAX));
-
     /*Wait for mutex*/
-    tx_thread_sleep(5000);
+    tx_thread_sleep(100);
+    uint32_t len;
+    Msg_INS_t msg_ins;
+    om_suber_t *suber_ins = om_subscribe(om_find_topic("INS", UINT32_MAX));
 
     while (true) {
         /* Check if device is configured */
