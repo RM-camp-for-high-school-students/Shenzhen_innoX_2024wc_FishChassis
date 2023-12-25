@@ -95,17 +95,18 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_TIM1_Init();
+  MX_TIM4_Init();
   MX_TIM5_Init();
   MX_TIM10_Init();
   MX_SPI1_Init();
   MX_SPI2_Init();
   MX_USART1_UART_Init();
-  MX_USART6_UART_Init();
   MX_USART3_UART_Init();
+  MX_USART6_UART_Init();
   MX_CAN1_Init();
   MX_CAN2_Init();
   MX_USB_OTG_FS_PCD_Init();
-  MX_TIM4_Init();
+  MX_TIM8_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */

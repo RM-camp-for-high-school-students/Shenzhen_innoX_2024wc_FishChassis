@@ -36,6 +36,8 @@ namespace PID {
         virtual T Calculate(T fdb, T dt) = 0;
 
         virtual void Rst() = 0;
+
+        virtual T Out() = 0;
     };
 
     template<typename T>
@@ -65,7 +67,7 @@ namespace PID {
         T _preerror;
         T _prederror;
 
-        inline T ForwardLoop(){
+        inline T ForwardLoop() {
             /* 1阶惯性环节前馈环 G(s)=(1+s)/Ts */
             return (_ref - _last_ref + 1) / _dt;
         }
@@ -95,6 +97,35 @@ namespace PID {
                 _en_differ_separation(en_differ_separation),
                 _inter_range(inter_range),
                 _differ_range(differ_range) {
+            Rst();
+        }
+
+        cPID_Inc() {}; /*Default Constructor*/
+
+        void SetParam(
+                T kp,
+                T ki,
+                T kd,
+                T kf,
+                T dt,
+                T max_out,
+                T min_out,
+                bool en_inter_separation,
+                T inter_range,
+                bool en_differ_separation,
+                T differ_range
+        ) {
+            _kp = kp;
+            _ki = ki;
+            _kd = kd;
+            _kf = kf;
+            _dt = dt;
+            _max_out = max_out;
+            _min_out = min_out;
+            _en_inter_separation = en_inter_separation;
+            _inter_range = inter_range;
+            _en_differ_separation = en_differ_separation;
+            _differ_range = differ_range;
             Rst();
         }
 
@@ -150,6 +181,10 @@ namespace PID {
             //赋值
             _out = tmp[3];
             return tmp[3];
+        }
+
+        T Out() override {
+            return _out;
         }
     };
 
@@ -218,6 +253,39 @@ namespace PID {
             Rst();
         }
 
+        cPID_Pst() {}; /*Default Constructor*/
+
+        void SetParam(
+                T kp,
+                T ki,
+                T kd,
+                T kf,
+                T dt,
+                T max_out,
+                T min_out,
+                T integral_max,
+                T integral_min,
+                bool en_inter_separation,
+                T inter_range,
+                bool en_differ_separation,
+                T differ_range
+        ) {
+            _kp = kp;
+            _ki = ki;
+            _kd = kd;
+            _kf = kf;
+            _dt = dt;
+            _max_out = max_out;
+            _min_out = min_out;
+            _integral_max = integral_max;
+            _integral_min = integral_min;
+            _en_inter_separation = en_inter_separation;
+            _inter_range = inter_range;
+            _en_differ_separation = en_differ_separation;
+            _differ_range = differ_range;
+            Rst();
+        }
+
         void Rst() override {
             _feedback = 0;
             _ref = 0;
@@ -263,6 +331,10 @@ namespace PID {
             tmp[3] = (tmp[3] < _min_out) ? _min_out : tmp[3];
             //赋值
             _out = tmp[3];
+            return _out;
+        }
+
+        T Out() override {
             return _out;
         }
 

@@ -8,6 +8,7 @@ Author: qianwan.Jin
 >Version: 1.0   
 Generate Date: 2023/12/20     
 Description: Creat this protocol  
+Source: [FishChassis.xml](./FishChassis.xml)
 
 - [Fish Chassis System Protocol](#fish-chassis-system-protocol)
   - [Enum](#enum)
@@ -32,13 +33,13 @@ Description: Creat this protocol
 
 ## Message
 #### Overall
-| Name                 | Sender     | Receiver   | Trigger Condition                                                     | Description                     |
-| -------------------- | ---------- | ---------- | --------------------------------------------------------------------- | ------------------------------- |
-| chs_ctrol_info     | OrangePi | Chassis | Actively send | Control chassis' move.       |
-| chs_motor_info  | OrangePi or ESP32     | Chassis | Actively send | Control motors directly. |
-| chs_odom_info  | Chassis | OrangePi or ESP32 | Periodic 200Hz | Feedback variables of chassis. |
-| chs_servos_info | OrangePi or ESP32 | Chassis | Actively send | Control servo sockets pwm duty cycle. |
-| chs_manage_info | OrangePi or ESP32 | Chassis | Actively send | Control motors and servos enable or not, and reset quaterinon. |
+| Name                | ID | Sender     | Receiver   | Trigger Condition                                                     | Description                     |
+| ------------------- | ---------- | ---------- | ---------- | --------------------------------------------------------------------- | ------------------------------- |
+| chs_ctrl_info     | 0 | OrangePi | Chassis | Actively send | Control chassis' move.       |
+| chs_motor_info  | 1 | OrangePi or ESP32     | Chassis | Actively send | Control motors directly. |
+| chs_odom_info  | 2 | Chassis | OrangePi or ESP32 | Periodic 200Hz | Feedback variables of chassis. |
+| chs_servos_info | 3 | OrangePi or ESP32 | Chassis | Actively send | Control servo sockets pwm duty cycle. |
+| chs_manage_info | 4 | OrangePi or ESP32 | Chassis | Actively send | Control motors and servos enable or not, and reset quaterinon. |
 
 ><font color=red>Fatal Warning: the Motor and the Servo components will auto disable if it doesn't recevie any of valid control message in 500ms.</font>
 
@@ -136,7 +137,7 @@ uint8_t MyTask() {
   /*函数传入值: 1.发送的主机(Server) 2.发送的部件(Server)*/
   /*函数传入值: 3.消息结构体*/
   /*函数传入值: 4.消息的内容*/
-  mavlink_msg_chs_ctrl_info_encode(
+  mavlink_msg_chs_ctrl_info_pack(
     CHS_SYSTEM_ID::CHS_ID_ORANGE,
     CHS_SYSTEM_ID::CHS_ID_ORANGE, 
     msg, 

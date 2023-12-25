@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: qianwan
  * @Date: 2023-12-20 16:01:58
- * @LastEditTime: 2023-12-23 19:15:00
+ * @LastEditTime: 2023-12-26 01:18:34
  * @LastEditors: qianwan
  */
 #include "app_threadx.h"
@@ -16,11 +16,13 @@
 SRAM_SET_CCM TX_BYTE_POOL ComPool;
 UCHAR COM_PoolBuf[4096] = {0};
 
+/*OneMessage pool*/
 SRAM_SET_CCM TX_BYTE_POOL MsgPool;
 SRAM_SET_CCM_UNINT UCHAR Msg_PoolBuf[4096] = {0};
 
+/*EKF pool*/
 SRAM_SET_CCM TX_BYTE_POOL MathPool;
-SRAM_SET_CCM_UNINT UCHAR Math_PoolBuf[40960] = {0};
+SRAM_SET_CCM_UNINT UCHAR Math_PoolBuf[10240] = {0};
 //extern TX_THREAD DebugThread;
 //extern uint8_t DebugThreadStack[256];
 //extern void DebugThreadFun(ULONG initial_input);
@@ -30,10 +32,25 @@ extern uint8_t IMUThreadStack[1024];
 
 extern void IMUThreadFun(ULONG initial_input);
 
+
 extern TX_THREAD IMUTemThread;
 extern uint8_t IMUTemThreadStack[1024];
 
 extern void IMUTemThreadFun(ULONG initial_input);
+
+
+extern TX_THREAD MsgSchedulerThread;
+extern TX_SEMAPHORE MsgCDCSem;
+extern uint8_t MsgSchedulerStack[1024];
+
+extern void MsgSchedulerFun(ULONG initial_input);
+
+
+extern TX_THREAD MsgSPIThread;
+extern TX_SEMAPHORE MsgSPITCSem;
+extern uint8_t MsgSPIStack[1024];
+
+extern void MsgSPIFun(ULONG initial_input);
 
 void Service_Booster(void) {
     /**********Memory pool in ram***********/
@@ -62,11 +79,17 @@ void Service_Booster(void) {
     om_init();
 
 /**********信号量***********/
-//	tx_semaphore_create(
-//		&MotorHS100Sem,
-//		(CHAR*)"MotorHS100Sem",
-//		0
-//		);
+    tx_semaphore_create(
+            &MsgCDCSem,
+            (CHAR *) "MsgCDCSem",
+            0
+    );
+
+    tx_semaphore_create(
+            &MsgSPITCSem,
+            (CHAR *) "MsgSPITCSem",
+            0
+    );
 
 
 /***********互斥量************/
@@ -77,13 +100,13 @@ void Service_Booster(void) {
 //		TX_NO_INHERIT);
 
 /**********消息队列***********/
-//	/*DBUS*/
-//	tx_queue_create(
-//		&RemoterRXQue,
-//		(CHAR*)"REMOTERQUE",
-//		4,
-//		RemoterQueueStack,
-//		sizeof(RemoterQueueStack));
+// /*DBUS*/
+// tx_queue_create(
+//         &RemoterRXQue,
+//         (CHAR*)"REMOTERQUE",
+//         4,
+//         RemoterQueueStack,
+//         sizeof(RemoterQueueStack));
 
 /**********进程***********/
 
@@ -108,6 +131,30 @@ void Service_Booster(void) {
             sizeof(IMUTemThreadStack),
             6,
             6,
+            TX_NO_TIME_SLICE,
+            TX_AUTO_START);
+
+    tx_thread_create(
+            &MsgSPIThread,
+            (CHAR *) "MsgSPI",
+            MsgSPIFun,
+            0x0000,
+            MsgSPIStack,
+            sizeof(MsgSPIStack),
+            5,
+            5,
+            TX_NO_TIME_SLICE,
+            TX_AUTO_START);
+
+    tx_thread_create(
+            &MsgSchedulerThread,
+            (CHAR *) "MsgScheduler",
+            MsgSchedulerFun,
+            0x0000,
+            MsgSchedulerStack,
+            sizeof(MsgSchedulerStack),
+            5,
+            5,
             TX_NO_TIME_SLICE,
             TX_AUTO_START);
 }

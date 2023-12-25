@@ -22,22 +22,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="babba83a-2a78-4ae1-bf29-388873eadff8" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists_template.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/DL_F407.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/DL_F407.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32f4xx_it.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32f4xx_it.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Inc/tim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/tim.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/can.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/can.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/gpio.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/gpio.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/stm32f4xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32f4xx_it.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Startup/startup_stm32f407ighx.s" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Startup/startup_stm32f407ighx.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Doc/system_layer.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/Doc/system_layer.drawio" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Doc/system_layer.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Doc/system_layer.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FishChassis.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/FishChassis.ioc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/BSP/Inc/FishMessage.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/BSP/Inc/FishMessage.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/Mavlink/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Module/Mavlink/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Module/PSAI/Inc/libpid-i-1.0.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Module/PSAI/Inc/libpid-i-1.0.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/STM32F407IGHX_FLASH.ld" beforeDir="false" afterPath="$PROJECT_DIR$/STM32F407IGHX_FLASH.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/Src/ServceMessage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServceMessage.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/Src/ServiceIMU.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceIMU.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Src/ServiceMsgCDC.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceMsgCDC.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/Inc/TaskWheel.h" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Inc/TaskWheel.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +67,104 @@
     </option>
     <option name="loadedFiles">
       <list>
-        <option value="$PROJECT_DIR$/.ocd/STM32F407.svd" />
+        <option value="D:\WorkSpace\Innox2024w\FishChassis\.ocd\STM32F407.svd" />
       </list>
+    </option>
+    <option name="nodes">
+      <map>
+        <entry key="STM32F407.svd" value="-E" />
+        <entry key="STM32F407.svd|g:CAN" value="-E" />
+        <entry key="STM32F407.svd|p:CAN1" value="-E" />
+        <entry key="STM32F407.svd|p:CAN1|BTR" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|ESR" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F0R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F0R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F10R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F10R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F11R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F11R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F12R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F12R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F13R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F13R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F14R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F14R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F15R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F15R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F16R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F16R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F17R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F17R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F18R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F18R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F19R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F19R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F1R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F1R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F20R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F20R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F21R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F21R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F22R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F22R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F23R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F23R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F24R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F24R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F25R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F25R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F26R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F26R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F27R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F27R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F2R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F2R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F3R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F3R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F4R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F4R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F5R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F5R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F6R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F6R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F7R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F7R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F8R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F8R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F9R1" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|F9R2" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|FA1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|FFA1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|FM1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|FMR" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|FS1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|IER" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|MCR" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|MSR" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|RDH0R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|RDH1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|RDL0R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|RDL1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|RDT0R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|RDT1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|RF0R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|RF1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|RI0R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|RI1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TDH0R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TDH1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TDH2R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TDL0R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TDL1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TDL2R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TDT0R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TDT1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TDT2R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TI0R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TI1R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TI2R" value="HC" />
+        <entry key="STM32F407.svd|p:CAN1|TSR" value="HC" />
+      </map>
     </option>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:RelWithDebInfo-MinGW-STM32" />
@@ -93,7 +192,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "CMake 应用程序.FishChassis.elf.executor": "Debug",
-    "OpenOCD 下载并运行.OCD FishChassis.executor": "Run",
+    "OpenOCD 下载并运行.OCD FishChassis.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -102,6 +201,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/WorkSpace/Innox2024w/FishChassis/.ocd/STM32F407.svd",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -173,6 +273,9 @@
       <workItem from="1703299664061" duration="13894000" />
       <workItem from="1703345319177" duration="11825000" />
       <workItem from="1703388894546" duration="25294000" />
+      <workItem from="1703439609954" duration="362000" />
+      <workItem from="1703474752031" duration="19235000" />
+      <workItem from="1703510625355" duration="15358000" />
     </task>
     <servers />
   </component>
@@ -187,8 +290,11 @@
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="com.jetbrains.cidr.embedded.openocd.conf.type">
-        <watch expression="flashCore" />
-        <watch expression="bmi088" />
+        <watch expression="TEST_WHEEL" language="ObjectiveC" />
+        <watch expression="wheel_pid" />
+        <watch expression="wheel_ctr" />
+        <watch expression="m2006" />
+        <watch expression="wheel_pid" />
       </configuration>
     </watches-manager>
   </component>
