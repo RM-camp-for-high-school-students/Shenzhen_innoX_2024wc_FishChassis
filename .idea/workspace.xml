@@ -22,25 +22,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="babba83a-2a78-4ae1-bf29-388873eadff8" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/stm32f4xx_it.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/stm32f4xx_it.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/tim.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/tim.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/can.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/can.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/gpio.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/gpio.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/stm32f4xx_it.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/stm32f4xx_it.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/tim.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/tim.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FishChassis.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/FishChassis.ioc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/BSP/Inc/FishMessage.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/BSP/Inc/FishMessage.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Module/Mavlink/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/PSAI/Inc/libpid-i-1.0.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Module/PSAI/Inc/libpid-i-1.0.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Src/ServceMessage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServceMessage.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Src/ServiceIMU.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceIMU.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Doc/serial_test_chassis.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Doc/serial_test_chassis.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/Inc/TaskWheel.h" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Inc/TaskWheel.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +176,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "CMake 应用程序.FishChassis.elf.executor": "Debug",
-    "OpenOCD 下载并运行.OCD FishChassis.executor": "Debug",
+    "OpenOCD 下载并运行.OCD FishChassis.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -225,11 +209,6 @@
       </method>
     </configuration>
     <configuration name="OneMessage" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="OneMessage" CONFIG_NAME="RelWithDebInfo-MinGW-STM32">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -275,7 +254,8 @@
       <workItem from="1703388894546" duration="25294000" />
       <workItem from="1703439609954" duration="362000" />
       <workItem from="1703474752031" duration="19235000" />
-      <workItem from="1703510625355" duration="15358000" />
+      <workItem from="1703510625355" duration="15484000" />
+      <workItem from="1703598444588" duration="5503000" />
     </task>
     <servers />
   </component>
@@ -290,11 +270,11 @@
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="com.jetbrains.cidr.embedded.openocd.conf.type">
-        <watch expression="TEST_WHEEL" language="ObjectiveC" />
-        <watch expression="wheel_pid" />
-        <watch expression="wheel_ctr" />
-        <watch expression="m2006" />
-        <watch expression="wheel_pid" />
+        <watch expression="usb_rx_data_processed" />
+        <watch expression="control_right_servo" />
+        <watch expression="_control_right_servo_last" />
+        <watch expression="msg_wheel_ctrl" />
+        <watch expression="ctr_enable" />
       </configuration>
     </watches-manager>
   </component>

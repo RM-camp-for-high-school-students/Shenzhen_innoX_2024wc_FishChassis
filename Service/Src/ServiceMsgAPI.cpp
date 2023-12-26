@@ -93,9 +93,9 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
         om_suber_export(sub_wheel, &msg_wheel_fdb, false);
         memcpy(odom_buf_now->quaternion, msg_ins.quaternion, 4 * sizeof(float));
         odom_buf_now->vx =
-                0.25f * (-msg_wheel_fdb.mps[0] + msg_wheel_fdb.mps[1] - msg_wheel_fdb.mps[2] + msg_wheel_fdb.mps[3]);
+                0.25f * (msg_wheel_fdb.mps[0] + msg_wheel_fdb.mps[1] - msg_wheel_fdb.mps[2] - msg_wheel_fdb.mps[3]);
         odom_buf_now->vy =
-                0.25f * (msg_wheel_fdb.mps[0] + msg_wheel_fdb.mps[1] + msg_wheel_fdb.mps[2] + msg_wheel_fdb.mps[3]);
+                0.25f * (-msg_wheel_fdb.mps[0] + msg_wheel_fdb.mps[1] + msg_wheel_fdb.mps[2] - msg_wheel_fdb.mps[3]);
         odom_buf_now->vw = msg_ins.gyro[2];
 
         /*Prepare mavlink transmission while USB connected.*/
@@ -145,17 +145,17 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
         if (_control_right_chassis) {
             if (usb_rx_data_processed.update_list_in_order[0]) {
                 msg_wheel_ctrl.mps[0] =
-                        -usb_rx_data_processed.chs_ctrl_info.vx + usb_rx_data_processed.chs_ctrl_info.vy +
-                        usb_rx_data_processed.chs_ctrl_info.vw * CHS_A_PLUS_B;
+                        usb_rx_data_processed.chs_ctrl_info.vx - usb_rx_data_processed.chs_ctrl_info.vw * CHS_A_PLUS_B
+                        - usb_rx_data_processed.chs_ctrl_info.vy;
                 msg_wheel_ctrl.mps[1] =
-                        usb_rx_data_processed.chs_ctrl_info.vx + usb_rx_data_processed.chs_ctrl_info.vy -
-                        usb_rx_data_processed.chs_ctrl_info.vw * CHS_A_PLUS_B;
+                        usb_rx_data_processed.chs_ctrl_info.vx - usb_rx_data_processed.chs_ctrl_info.vw * CHS_A_PLUS_B
+                        + usb_rx_data_processed.chs_ctrl_info.vy;
                 msg_wheel_ctrl.mps[2] =
-                        -usb_rx_data_processed.chs_ctrl_info.vx + usb_rx_data_processed.chs_ctrl_info.vy -
-                        usb_rx_data_processed.chs_ctrl_info.vw * CHS_A_PLUS_B;
+                        -usb_rx_data_processed.chs_ctrl_info.vx - usb_rx_data_processed.chs_ctrl_info.vw * CHS_A_PLUS_B
+                        + usb_rx_data_processed.chs_ctrl_info.vy;
                 msg_wheel_ctrl.mps[3] =
-                        usb_rx_data_processed.chs_ctrl_info.vx + usb_rx_data_processed.chs_ctrl_info.vy +
-                        usb_rx_data_processed.chs_ctrl_info.vw * CHS_A_PLUS_B;
+                        -usb_rx_data_processed.chs_ctrl_info.vx - usb_rx_data_processed.chs_ctrl_info.vw * CHS_A_PLUS_B
+                        - usb_rx_data_processed.chs_ctrl_info.vy;
                 usb_rx_data_processed.update_list_in_order[0] = false;
                 publish_wheel = true;
             } else if (usb_rx_data_processed.update_list_in_order[1]) {
