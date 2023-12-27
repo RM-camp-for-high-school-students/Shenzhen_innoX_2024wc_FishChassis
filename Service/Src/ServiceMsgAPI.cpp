@@ -17,8 +17,9 @@
 #include "FishMessage.h"
 #include "mavlink.h"
 
+#define SPI_TX_DATA_FLAG 0xab
 #define USB_MAX_LEN UX_SLAVE_REQUEST_DATA_MAX_LENGTH
-#define MSG_SPI_TOTAL_TX_LEN MAVLINK_MSG_ID_CHS_ODOM_INFO_LEN
+#define MSG_SPI_TOTAL_TX_LEN (MAVLINK_MSG_ID_CHS_ODOM_INFO_LEN + 1)
 #define MSG_SPI_TOTAL_RX_LEN (MAVLINK_MSG_ID_CHS_CTRL_INFO_LEN + MAVLINK_MSG_ID_CHS_SERVOS_INFO_LEN + MAVLINK_MSG_ID_CHS_MANAGE_INFO_LEN)
 #define MSG_USB_TOTAL_RX_LEN (MAVLINK_MSG_ID_CHS_CTRL_INFO_LEN + MAVLINK_MSG_ID_CHS_MOTOR_INFO_LEN + MAVLINK_MSG_ID_CHS_SERVOS_INFO_LEN + MAVLINK_MSG_ID_CHS_MANAGE_INFO_LEN)
 
@@ -39,8 +40,6 @@ SRAM_SET_CCM_UNINT static mavlink_message_t msg_rx;
 SRAM_SET_CCM_UNINT static mavlink_chs_odom_info_t *odom_buf_now = nullptr;
 SRAM_SET_CCM_UNINT static mavlink_chs_odom_info_t chs_odom_info[2];
 
-SRAM_SET_CCM_UNINT static uint8_t *spi_rx_buf = nullptr;
-SRAM_SET_CCM_UNINT static uint8_t *spi_tx_buf = nullptr;
 SRAM_SET_CCM_UNINT spi_rx_data_processed_t spi_rx_data_processed;
 
 
@@ -218,8 +217,10 @@ SRAM_SET_CCM TX_SEMAPHORE MsgSPITCSem;
 SRAM_SET_CCM uint8_t MsgSPIStack[1024] = {0};
 
 [[noreturn]] void MsgSPIFun(ULONG initial_input) {
-
     uint16_t data_len = MSG_SPI_TOTAL_TX_LEN;
+    uint8_t *spi_rx_buf = nullptr;
+    uint8_t *spi_tx_buf = nullptr;
+
     if (MSG_SPI_TOTAL_RX_LEN > data_len) {
         data_len = MSG_SPI_TOTAL_RX_LEN;
     }
@@ -228,6 +229,9 @@ SRAM_SET_CCM uint8_t MsgSPIStack[1024] = {0};
         || tx_byte_allocate(&ComPool, (VOID **) &spi_tx_buf, data_len, TX_NO_WAIT)) {
         Msg_Fault();
     }
+
+    //Flag of SPI TX
+    spi_tx_buf[0]=SPI_TX_DATA_FLAG;
 
     mavlink_chs_odom_info_t chs_odom_tmp{.vx=0, .vy=0, .vw=0, .quaternion={1, 0, 0, 0}};
     for (;;) {
@@ -238,7 +242,7 @@ SRAM_SET_CCM uint8_t MsgSPIStack[1024] = {0};
                                  50) != TX_SUCCESS) {
             control_right_servo = true;
             control_right_chassis = true;
-            memcpy(spi_tx_buf, &chs_odom_tmp,
+            memcpy(spi_tx_buf+1, &chs_odom_tmp,
                    sizeof(mavlink_chs_odom_info_t));
             HAL_SPI_Abort(&hspi2);
             HAL_SPI_TransmitReceive_DMA(&hspi2, spi_tx_buf, spi_rx_buf, data_len);
