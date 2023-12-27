@@ -129,8 +129,8 @@ void Service_Booster(void) {
             0x0000,
             IMUTemThreadStack,
             sizeof(IMUTemThreadStack),
-            6,
-            6,
+            10,
+            10,
             TX_NO_TIME_SLICE,
             TX_AUTO_START);
 

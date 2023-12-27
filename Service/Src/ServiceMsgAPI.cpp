@@ -11,17 +11,26 @@
 #include "ux_device_class_cdc_acm.h"
 #include "ServiceMsgAPI.h"
 #include "TaskWheel.h"
+#include "CRC8.h"
 
 #include "arm_math.h"
 #include "om.h"
 #include "FishMessage.h"
 #include "mavlink.h"
 
-#define SPI_TX_DATA_FLAG 0xab
+#define MSG_SPI_FLAG 0xAB
+#define MSG_SPI_MAX_LOSE 2
+#define MSG_DECNT_TIM 25
+#define MSG_RECNT_TIM 32
 #define USB_MAX_LEN UX_SLAVE_REQUEST_DATA_MAX_LENGTH
-#define MSG_SPI_TOTAL_TX_LEN (MAVLINK_MSG_ID_CHS_ODOM_INFO_LEN + 1)
+#define MSG_SPI_TOTAL_TX_LEN (MAVLINK_MSG_ID_CHS_ODOM_INFO_LEN)
 #define MSG_SPI_TOTAL_RX_LEN (MAVLINK_MSG_ID_CHS_CTRL_INFO_LEN + MAVLINK_MSG_ID_CHS_SERVOS_INFO_LEN + MAVLINK_MSG_ID_CHS_MANAGE_INFO_LEN)
-#define MSG_USB_TOTAL_RX_LEN (MAVLINK_MSG_ID_CHS_CTRL_INFO_LEN + MAVLINK_MSG_ID_CHS_MOTOR_INFO_LEN + MAVLINK_MSG_ID_CHS_SERVOS_INFO_LEN + MAVLINK_MSG_ID_CHS_MANAGE_INFO_LEN)
+
+#if (MSG_SPI_TOTAL_TX_LEN > MSG_SPI_TOTAL_RX_LEN)
+#define MSG_SPI_LEN (MSG_SPI_TOTAL_TX_LEN + 1)
+#else
+#define MSG_SPI_LEN (MSG_SPI_TOTAL_RX_LEN + 1)
+#endif
 
 //#define ASSIGN_CONTROL_RIGHT
 #ifdef ASSIGN_CONTROL_RIGHT
@@ -41,7 +50,6 @@ SRAM_SET_CCM_UNINT static mavlink_chs_odom_info_t *odom_buf_now = nullptr;
 SRAM_SET_CCM_UNINT static mavlink_chs_odom_info_t chs_odom_info[2];
 
 SRAM_SET_CCM_UNINT spi_rx_data_processed_t spi_rx_data_processed;
-
 
 SRAM_SET_CCM_UNINT static uint8_t *usb_buf_now = nullptr;
 SRAM_SET_CCM_UNINT static uint16_t usb_tx_len = 0;
@@ -83,6 +91,7 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
     odom_buf_now = chs_odom_info;
     usb_buf_now = usb_tx_buf[0];
 
+    tx_thread_sleep(10);
     while (true) {
         device = &_ux_system_slave->ux_system_slave_device;
 
@@ -112,6 +121,7 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
         _control_right_chassis = ASSIGH_CHASSIS_RIGHT;
         _control_right_servo = ASSIGH_SERVO_RIGHT;
 #else
+
         if (_control_right_chassis_last != control_right_chassis) {
             _control_right_chassis_last = control_right_chassis;
             _control_right_chassis = control_right_chassis;
@@ -131,7 +141,6 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
             msg_wheel_ctrl.enable = spi_rx_data_processed.chs_manage_info.enable_chassis;
             msg_servo.enable = spi_rx_data_processed.chs_manage_info.enable_servos;
             imu_rst = spi_rx_data_processed.chs_manage_info.reset_quaternion;
-            spi_rx_data_processed.update = false;
         }
         if (usb_rx_data_processed.update_list_in_order[3]) {
             msg_wheel_ctrl.enable = usb_rx_data_processed.chs_manage_info.enable_chassis;
@@ -170,7 +179,7 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
             msg_wheel_ctrl.mps[1] = (float) spi_rx_data_processed.chs_motor_info.motor[1] * RPM_CONST_REV;
             msg_wheel_ctrl.mps[2] = (float) spi_rx_data_processed.chs_motor_info.motor[2] * RPM_CONST_REV;
             msg_wheel_ctrl.mps[3] = (float) spi_rx_data_processed.chs_motor_info.motor[3] * RPM_CONST_REV;
-            spi_rx_data_processed.update = false;
+
             publish_wheel = true;
         }
 
@@ -202,6 +211,8 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
             publish_servo = true;
         }
 
+        spi_rx_data_processed.update = false;
+
         if (publish_servo) {
             msg_servo.timestamp = tx_time_get();
             om_publish(pub_servo, &msg_servo, sizeof(Msg_Servo_t), true, false);
@@ -215,41 +226,54 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
 SRAM_SET_CCM TX_THREAD MsgSPIThread;
 SRAM_SET_CCM TX_SEMAPHORE MsgSPITCSem;
 SRAM_SET_CCM uint8_t MsgSPIStack[1024] = {0};
+SRAM_SET_CCM static uint8_t *spi_rx_buf = nullptr;
+SRAM_SET_CCM static uint8_t *spi_tx_buf = nullptr;
 
 [[noreturn]] void MsgSPIFun(ULONG initial_input) {
-    uint16_t data_len = MSG_SPI_TOTAL_TX_LEN;
-    uint8_t *spi_rx_buf = nullptr;
-    uint8_t *spi_tx_buf = nullptr;
+    bool spi_off = false;
+    uint8_t crc_val;
+    uint32_t off_cnt = 0;
 
-    if (MSG_SPI_TOTAL_RX_LEN > data_len) {
-        data_len = MSG_SPI_TOTAL_RX_LEN;
-    }
-
-    if (tx_byte_allocate(&ComPool, (VOID **) &spi_rx_buf, data_len, TX_NO_WAIT)
-        || tx_byte_allocate(&ComPool, (VOID **) &spi_tx_buf, data_len, TX_NO_WAIT)) {
+    if (tx_byte_allocate(&ComPool, (VOID **) &spi_rx_buf, MSG_SPI_LEN, TX_NO_WAIT)
+        || tx_byte_allocate(&ComPool, (VOID **) &spi_tx_buf, MSG_SPI_LEN, TX_NO_WAIT)) {
         Msg_Fault();
     }
-
     //Flag of SPI TX
-    spi_tx_buf[0]=SPI_TX_DATA_FLAG;
-
-    mavlink_chs_odom_info_t chs_odom_tmp{.vx=0, .vy=0, .vw=0, .quaternion={1, 0, 0, 0}};
+    mavlink_chs_odom_info_t chs_odom_tmp{.vx=0, .vy=0, .vw=0, .quaternion={1.0f, 0, 0, 0}};
     for (;;) {
-
-        HAL_SPI_TransmitReceive_DMA(&hspi2, spi_tx_buf, spi_rx_buf, data_len);
-        if (
-                tx_semaphore_get(&MsgSPITCSem,
-                                 50) != TX_SUCCESS) {
-            control_right_servo = true;
-            control_right_chassis = true;
-            memcpy(spi_tx_buf+1, &chs_odom_tmp,
-                   sizeof(mavlink_chs_odom_info_t));
-            HAL_SPI_Abort(&hspi2);
-            HAL_SPI_TransmitReceive_DMA(&hspi2, spi_tx_buf, spi_rx_buf, data_len);
-            tx_semaphore_get(&MsgSPITCSem, TX_WAIT_FOREVER);
-            control_right_servo = false;
-            control_right_chassis = false;
+        memcpy(spi_tx_buf, odom_buf_now, sizeof(mavlink_chs_odom_info_t));
+        spi_tx_buf[MSG_SPI_LEN - 1] = MSG_SPI_FLAG;
+        spi_tx_buf[MSG_SPI_LEN - 1] = cal_crc8_table(spi_tx_buf, MSG_SPI_LEN);
+        HAL_SPI_TransmitReceive_DMA(&hspi2, spi_tx_buf, spi_rx_buf, MSG_SPI_LEN);
+        if (spi_off) {
+            if (tx_semaphore_get(&MsgSPITCSem, MSG_RECNT_TIM) != TX_SUCCESS) {
+                control_right_servo = true;
+                control_right_chassis = true;
+                HAL_SPI_Abort(&hspi2);
+                continue;
+            }
+        } else {
+            if (tx_semaphore_get(&MsgSPITCSem, MSG_DECNT_TIM) != TX_SUCCESS) {
+                spi_off = true;
+                HAL_SPI_Abort(&hspi2);
+                continue;
+            }
         }
+
+        crc_val = spi_rx_buf[MSG_SPI_LEN - 1];
+        spi_rx_buf[MSG_SPI_LEN - 1] = MSG_SPI_FLAG;
+        if (crc_val != cal_crc8_table(spi_rx_buf, MSG_SPI_LEN)) {
+            if (++off_cnt > MSG_SPI_MAX_LOSE) {
+                spi_off = true;
+                off_cnt = 0;
+            }
+            continue;
+        }
+
+        off_cnt = 0;
+        control_right_servo = false;
+        control_right_chassis = false;
+
         memcpy(&spi_rx_data_processed.chs_motor_info, spi_rx_buf, sizeof(mavlink_chs_motor_info_t));
         memcpy(&spi_rx_data_processed.chs_servos_info, spi_rx_buf + sizeof(mavlink_chs_motor_info_t),
                sizeof(mavlink_chs_servos_info_t));
@@ -261,7 +285,7 @@ SRAM_SET_CCM uint8_t MsgSPIStack[1024] = {0};
 }
 
 //SPI TC Callback
-void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi) {
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi) {
     if (hspi == &hspi2) {
         tx_semaphore_put(&MsgSPITCSem);
     }
@@ -376,7 +400,6 @@ extern UX_SLAVE_CLASS_CDC_ACM *cdc_acm;
         /*Sleep 10ms*/
         tx_thread_sleep(10);
     }
-
 }
 
 [[noreturn]] static void Msg_Fault() {

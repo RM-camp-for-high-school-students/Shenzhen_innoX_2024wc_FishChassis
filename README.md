@@ -9,6 +9,11 @@
 *深圳科创学院2024高中生机器人冬令营 底盘嵌入式系统*   
 *InnoxSZ 2024 Robotics Winter Camp for High School Students.* 
 
+Get this repository by:   
+``` bash
+git clone https://github.com/RM-camp-for-high-school-students/Shenzhen-innoX-2024wc-chassis.git --recursive
+```
+
 - [Fish Chassis System](#fish-chassis-system)
   - [Environment](#environment)
       - [Softwares](#softwares)
@@ -36,7 +41,7 @@
 - STM32CubeExpansion_AZRTOS-F4 V1.1.0
 
 #### Communication Module
-[FishChassis Protocl with Mavlink2](./Mavlink/README.md)
+[FishChassis Protocl with Mavlink2](Module/Mavlink/README.md)
 
 #### Publisher-Subscriber Module
 [OneMessage](Module/OneMessage/README.md)

@@ -125,11 +125,6 @@ uint8_t spi_rx_data_buf[48];
     }
 }
 
-void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi) {
-    if (hspi == &hspi2) {
-        spi2_time = tx_time_get();
-    }
-}
 
 [[noreturn]] void Test02ThreadFun(ULONG initial_input) {
     /* 创建话题 */

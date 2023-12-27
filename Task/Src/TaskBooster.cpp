@@ -108,8 +108,8 @@ void Task_Booster() {
             0x0000,
             WheelThreadStack,
             sizeof(WheelThreadStack),
-            5,
-            5,
+            4,
+            4,
             TX_NO_TIME_SLICE,
             TX_AUTO_START);
 
@@ -120,8 +120,8 @@ void Task_Booster() {
             0x0000,
             ServoThreadStack,
             sizeof(ServoThreadStack),
-            5,
-            5,
+            4,
+            4,
             TX_NO_TIME_SLICE,
             TX_AUTO_START);
 
