@@ -59,7 +59,7 @@ include_directories(Module/BSP/Inc)
 # Include PSAI head files
 include_directories(Module/PSAI/Inc)
 # Include mavlink head files
-include_directories(Module/Mavlink/FishChassis)
+include_directories(Module/Mavlink/FishCom)
 # Include IMU head files
 include_directories(Module/IMU/Inc)
 # include user service head files

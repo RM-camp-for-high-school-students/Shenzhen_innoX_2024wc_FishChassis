@@ -22,26 +22,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="babba83a-2a78-4ae1-bf29-388873eadff8" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Module/Mavlink" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/FishChassis.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/FishChassis/FishChassis.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/FishChassis/mavlink.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/FishChassis/mavlink_msg_chs_ctrl_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/FishChassis/mavlink_msg_chs_manage_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/FishChassis/mavlink_msg_chs_motor_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/FishChassis/mavlink_msg_chs_odom_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/FishChassis/mavlink_msg_chs_servos_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/FishChassis/testsuite.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/FishChassis/version.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/checksum.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/mavlink_conversions.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/mavlink_get_info.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/mavlink_helpers.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/mavlink_sha256.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/mavlink_types.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink/protocol.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists_template.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,6 +205,11 @@
     </key>
   </component>
   <component name="RunManager" selected="OpenOCD 下载并运行.OCD FishChassis">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FishChassis.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="FishChassis.elf" CONFIG_NAME="RelWithDebInfo-MinGW-STM32" RUN_TARGET_PROJECT_NAME="FishChassis" RUN_TARGET_NAME="FishChassis.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -273,7 +263,7 @@
       <workItem from="1703474752031" duration="19235000" />
       <workItem from="1703510625355" duration="15484000" />
       <workItem from="1703598444588" duration="5503000" />
-      <workItem from="1703647721487" duration="1603000" />
+      <workItem from="1703647721487" duration="1909000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,3 @@
+[submodule "Module/Mavlink"]
+	path = Module/Mavlink
+	url = git@github.com:Q1anWan/FishCom.git
