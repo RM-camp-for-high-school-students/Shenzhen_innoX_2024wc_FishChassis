@@ -54,7 +54,8 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
             LL_TIM_EnableAllOutputs(TIM4);
             LL_TIM_EnableCounter(TIM4);
         }
-        LL_TIM_OC_SetCompareCH3(TIM4,299);
+        accel[0] = 199;accel[1] = 0;
+        LL_TIM_OC_SetCompareCH3(TIM4,accel[0]);
         tx_thread_sleep(300);
         LL_TIM_OC_SetCompareCH3(TIM4,0);
 
@@ -72,9 +73,14 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
             gyro_offset[0] -= (float)gyro[0]/10000.0f;
             gyro_offset[1] -= (float)gyro[1]/10000.0f;
             gyro_offset[2] -= (float)gyro[2]/10000.0f;
+            if(++accel[1]==100){
+                LL_TIM_OC_SetCompareCH3(TIM4, accel[0]);
+                accel[0] = accel[0]?0:199;
+                accel[1] = 0;
+            }
             tx_thread_sleep(10);
         }
-        LL_TIM_OC_SetCompareCH3(TIM4, 199);
+        LL_TIM_OC_SetCompareCH3(TIM4, accel[0]);
         flashCore.config_data(Flash::Element_ID_GYRO, (uint8_t *) gyro_offset, sizeof(gyro_offset));
         __disable_interrupts();
         flashCore.rebuild();
