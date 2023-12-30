@@ -13,7 +13,7 @@
 #include "om.h"
 
 SRAM_SET_CCM TX_THREAD ServoThread;
-SRAM_SET_CCM uint8_t ServoThreadStack[1024] = {0};
+SRAM_SET_CCM uint8_t ServoThreadStack[256] = {0};
 
 /*Close-loop control wheels*/
 [[noreturn]] void ServoThreadFun(ULONG initial_input) {

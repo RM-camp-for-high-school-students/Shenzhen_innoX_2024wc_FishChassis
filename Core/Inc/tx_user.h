@@ -89,7 +89,7 @@
 /*#define TX_TIMER_THREAD_STACK_SIZE                1024*/
 /*#define TX_TIMER_THREAD_PRIORITY                0*/
 
-/*#define TX_MINIMUM_STACK                200*/
+#define TX_MINIMUM_STACK                64
 
 /* Determine if timer expirations (application timers, timeouts, and tx_thread_sleep calls
    should be processed within the a system timer thread or directly in the timer ISR.
@@ -166,7 +166,7 @@
    code size and overhead, but provides the ability to generate system trace information which
    is available for viewing in TraceX.  */
 
-/*#define TX_ENABLE_EVENT_TRACE*/
+#define TX_ENABLE_EVENT_TRACE
 
 /* Determine if block pool performance gathering is required by the application. When the following is
    defined, ThreadX gathers various block pool performance information. */
@@ -207,6 +207,14 @@
    defined, ThreadX gathers various timer performance information. */
 
 /*#define TX_TIMER_ENABLE_PERFORMANCE_INFO*/
+
+/* Define the clock source for trace event entry time stamp. */
+
+/*#define TX_TRACE_TIME_SOURCE  *((ULONG *) 0xE0001004)*/
+
+/* Define the clock source for trace mask. */
+
+/*#define TX_TRACE_TIME_MASK  0xFFFFFFFFUL*/
 
 /* Define if the execution change notify is enabled. */
 

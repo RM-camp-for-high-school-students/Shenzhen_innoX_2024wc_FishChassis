@@ -13,7 +13,6 @@
 #include "TaskWheel.h"
 #include "CRC8.h"
 
-#include "arm_math.h"
 #include "om.h"
 #include "FishMessage.h"
 #include "mavlink.h"
@@ -63,10 +62,10 @@ SRAM_SET_CCM_UNINT static bool control_right_servo = false; //true: CDC false: S
 
 SRAM_SET_CCM TX_THREAD MsgSchedulerThread;
 SRAM_SET_CCM TX_SEMAPHORE MsgCDCSem;
-SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
+SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
 
 [[noreturn]] void MsgSchedulerFun(ULONG initial_input) {
-
+    UNUSED(initial_input);
     om_suber_t *sub_ins = om_subscribe(om_find_topic("INS", UINT32_MAX));
     om_suber_t *sub_wheel = om_subscribe(om_find_topic("WheelFDB", UINT32_MAX));
     om_topic_t *pub_wheel = om_find_topic("WheelControl", UINT32_MAX);
@@ -142,11 +141,9 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
             msg_servo.enable = spi_rx_data_processed.chs_manage_info.enable_servos;
             imu_rst = spi_rx_data_processed.chs_manage_info.reset_quaternion;
         }
+        // Chassis and Servo Enable need control right
         if (usb_rx_data_processed.update_list_in_order[3]) {
-            msg_wheel_ctrl.enable = usb_rx_data_processed.chs_manage_info.enable_chassis;
-            msg_servo.enable = usb_rx_data_processed.chs_manage_info.enable_servos;
             imu_rst = usb_rx_data_processed.chs_manage_info.reset_quaternion;
-            usb_rx_data_processed.update_list_in_order[3] = false;
         }
 
 
@@ -164,15 +161,18 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
                 msg_wheel_ctrl.mps[3] =
                         -usb_rx_data_processed.chs_ctrl_info.vx - usb_rx_data_processed.chs_ctrl_info.vw * CHS_A_PLUS_B
                         - usb_rx_data_processed.chs_ctrl_info.vy;
-                usb_rx_data_processed.update_list_in_order[0] = false;
+
                 publish_wheel = true;
             } else if (usb_rx_data_processed.update_list_in_order[1]) {
                 msg_wheel_ctrl.mps[0] = (float) usb_rx_data_processed.chs_motor_info.motor[0] * RPM_CONST_REV;
                 msg_wheel_ctrl.mps[1] = (float) usb_rx_data_processed.chs_motor_info.motor[1] * RPM_CONST_REV;
                 msg_wheel_ctrl.mps[2] = (float) usb_rx_data_processed.chs_motor_info.motor[2] * RPM_CONST_REV;
                 msg_wheel_ctrl.mps[3] = (float) usb_rx_data_processed.chs_motor_info.motor[3] * RPM_CONST_REV;
-                usb_rx_data_processed.update_list_in_order[1] = false;
+
                 publish_wheel = true;
+            }
+            if (usb_rx_data_processed.update_list_in_order[3]) {
+                msg_wheel_ctrl.enable = usb_rx_data_processed.chs_manage_info.enable_chassis;
             }
         } else if (spi_rx_data_processed.update) {
             msg_wheel_ctrl.mps[0] = (float) spi_rx_data_processed.chs_motor_info.motor[0] * RPM_CONST_REV;
@@ -197,8 +197,11 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
                 msg_servo.servo[4] = usb_rx_data_processed.chs_servos_info.servos[4];
                 msg_servo.servo[5] = usb_rx_data_processed.chs_servos_info.servos[5];
                 msg_servo.servo[6] = usb_rx_data_processed.chs_servos_info.servos[6];
-                usb_rx_data_processed.update_list_in_order[2] = false;
+
                 publish_servo = true;
+            }
+            if (usb_rx_data_processed.update_list_in_order[3]) {
+                msg_servo.enable = usb_rx_data_processed.chs_manage_info.enable_servos;
             }
         } else if (spi_rx_data_processed.update) {
             msg_servo.servo[0] = spi_rx_data_processed.chs_servos_info.servos[0];
@@ -208,10 +211,16 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
             msg_servo.servo[4] = spi_rx_data_processed.chs_servos_info.servos[4];
             msg_servo.servo[5] = spi_rx_data_processed.chs_servos_info.servos[5];
             msg_servo.servo[6] = spi_rx_data_processed.chs_servos_info.servos[6];
+
             publish_servo = true;
         }
 
         spi_rx_data_processed.update = false;
+        usb_rx_data_processed.update_list_in_order[0] = false;
+        usb_rx_data_processed.update_list_in_order[1] = false;
+        usb_rx_data_processed.update_list_in_order[2] = false;
+        usb_rx_data_processed.update_list_in_order[3] = false;
+
 
         if (publish_servo) {
             msg_servo.timestamp = tx_time_get();
@@ -225,11 +234,12 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1024] = {0};
 
 SRAM_SET_CCM TX_THREAD MsgSPIThread;
 SRAM_SET_CCM TX_SEMAPHORE MsgSPITCSem;
-SRAM_SET_CCM uint8_t MsgSPIStack[1024] = {0};
+SRAM_SET_CCM uint8_t MsgSPIStack[768] = {0};
 SRAM_SET_CCM static uint8_t *spi_rx_buf = nullptr;
 SRAM_SET_CCM static uint8_t *spi_tx_buf = nullptr;
 
 [[noreturn]] void MsgSPIFun(ULONG initial_input) {
+    UNUSED(initial_input);
     bool spi_off = false;
     uint8_t crc_val;
     uint32_t off_cnt = 0;
@@ -238,24 +248,24 @@ SRAM_SET_CCM static uint8_t *spi_tx_buf = nullptr;
         || tx_byte_allocate(&ComPool, (VOID **) &spi_tx_buf, MSG_SPI_LEN, TX_NO_WAIT)) {
         Msg_Fault();
     }
+    tx_thread_sleep(200);
     //Flag of SPI TX
-    mavlink_chs_odom_info_t chs_odom_tmp{.vx=0, .vy=0, .vw=0, .quaternion={1.0f, 0, 0, 0}};
     for (;;) {
         memcpy(spi_tx_buf, odom_buf_now, sizeof(mavlink_chs_odom_info_t));
         spi_tx_buf[MSG_SPI_LEN - 1] = MSG_SPI_FLAG;
         spi_tx_buf[MSG_SPI_LEN - 1] = cal_crc8_table(spi_tx_buf, MSG_SPI_LEN);
         HAL_SPI_TransmitReceive_DMA(&hspi2, spi_tx_buf, spi_rx_buf, MSG_SPI_LEN);
         if (spi_off) {
+            control_right_servo = true;
+            control_right_chassis = true;
             if (tx_semaphore_get(&MsgSPITCSem, MSG_RECNT_TIM) != TX_SUCCESS) {
-                control_right_servo = true;
-                control_right_chassis = true;
-                HAL_SPI_Abort(&hspi2);
                 continue;
             }
         } else {
             if (tx_semaphore_get(&MsgSPITCSem, MSG_DECNT_TIM) != TX_SUCCESS) {
                 spi_off = true;
                 HAL_SPI_Abort(&hspi2);
+                tx_thread_sleep(1);
                 continue;
             }
         }
@@ -267,10 +277,12 @@ SRAM_SET_CCM static uint8_t *spi_tx_buf = nullptr;
                 spi_off = true;
                 off_cnt = 0;
             }
+            tx_thread_sleep(1);
             continue;
         }
 
         off_cnt = 0;
+        spi_off = false;
         control_right_servo = false;
         control_right_chassis = false;
 
@@ -295,9 +307,6 @@ void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi) {
 extern UX_SLAVE_CLASS_CDC_ACM *cdc_acm;
 
 
-///* Data to send over USB CDC are stored in this buffer   */
-//SRAM_SET_CCM_UNINT uint8_t usb_tx_buf[USB_MAX_LEN];
-
 /**
   * @brief  Function implementing usbx_cdc_acm_thread_entry.
   * @param arg: Not used
@@ -305,7 +314,7 @@ extern UX_SLAVE_CLASS_CDC_ACM *cdc_acm;
   */
 [[noreturn]] VOID usbx_cdc_acm_read_thread_entry(ULONG arg) {
     ULONG actual_length;
-    ULONG cnt = 0;
+    ULONG cnt;
     UX_SLAVE_DEVICE *device;
     int chan = MAVLINK_COMM_0;
     mavlink_status_t r_mavlink_status;
@@ -380,10 +389,6 @@ extern UX_SLAVE_CLASS_CDC_ACM *cdc_acm;
 
     /*Wait for mutex*/
     tx_thread_sleep(100);
-    uint32_t len;
-    Msg_INS_t msg_ins{};
-    om_suber_t *suber_ins = om_subscribe(om_find_topic("INS", UINT32_MAX));
-
     while (true) {
         /* Check if device is configured */
         device = &_ux_system_slave->ux_system_slave_device;

@@ -342,7 +342,7 @@
 
 /* Determine if tracing is enabled.  */
 
-/*#define UX_TRACE_INSERT_MACROS*/
+#define UX_TRACE_INSERT_MACROS
 
 #endif
 

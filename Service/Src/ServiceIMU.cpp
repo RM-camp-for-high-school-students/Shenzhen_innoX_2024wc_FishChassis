@@ -26,11 +26,12 @@ SRAM_SET_CCM TX_THREAD IMUThread;
 SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
 
 [[noreturn]] void IMUThreadFun(ULONG initial_input) {
+    UNUSED(initial_input);
     /* INS Topic */
     om_topic_t *ins_topic = om_config_topic(nullptr, "CA", "INS", sizeof(Msg_INS_t));
 
     cDWT dwt;
-    bool calibrate = !LL_GPIO_IsInputPinSet(KEY_GPIO_Port,KEY_Pin);
+    bool calibrate = !LL_GPIO_IsInputPinSet(KEY_GPIO_Port, KEY_Pin);
     int16_t accel[3];
     int16_t gyro[3];
     float accel_f[3];
@@ -49,33 +50,34 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
     BMI088_Config(bmi088);
 
     if (calibrate) {
-        if(!LL_TIM_IsEnabledCounter(TIM4)){
-            LL_TIM_CC_EnableChannel(TIM4,LL_TIM_CHANNEL_CH3);
+        if (!LL_TIM_IsEnabledCounter(TIM4)) {
+            LL_TIM_CC_EnableChannel(TIM4, LL_TIM_CHANNEL_CH3);
             LL_TIM_EnableAllOutputs(TIM4);
             LL_TIM_EnableCounter(TIM4);
         }
-        accel[0] = 199;accel[1] = 0;
-        LL_TIM_OC_SetCompareCH3(TIM4,accel[0]);
+        accel[0] = 199;
+        accel[1] = 0;
+        LL_TIM_OC_SetCompareCH3(TIM4, accel[0]);
         tx_thread_sleep(300);
-        LL_TIM_OC_SetCompareCH3(TIM4,0);
+        LL_TIM_OC_SetCompareCH3(TIM4, 0);
 
         gyro_offset[0] = 0.0f;
         gyro_offset[1] = 0.0f;
         gyro_offset[2] = 0.0f;
 
-        while (bmi088.GetTem()<49.0f){
+        while (bmi088.GetTem() < 49.0f) {
             tx_thread_sleep(100);
         }
         tx_thread_sleep(5000);
         /*Calibrate Gyro for 100 s*/
         for (uint16_t i = 0; i < 10000; i++) {
             bmi088.GetGyro((uint8_t *) gyro);
-            gyro_offset[0] -= (float)gyro[0]/10000.0f;
-            gyro_offset[1] -= (float)gyro[1]/10000.0f;
-            gyro_offset[2] -= (float)gyro[2]/10000.0f;
-            if(++accel[1]==100){
+            gyro_offset[0] -= (float) gyro[0] / 10000.0f;
+            gyro_offset[1] -= (float) gyro[1] / 10000.0f;
+            gyro_offset[2] -= (float) gyro[2] / 10000.0f;
+            if (++accel[1] == 100) {
                 LL_TIM_OC_SetCompareCH3(TIM4, accel[0]);
-                accel[0] = accel[0]?0:199;
+                accel[0] = accel[0] ? 0 : 199;
                 accel[1] = 0;
             }
             tx_thread_sleep(10);
@@ -93,7 +95,7 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
     for (;;) {
 
         /*Rst quaternion*/
-        if(imu_rst){
+        if (imu_rst) {
             imu_rst = false;
             IMU_QuaternionEKF_Reset();
         }
@@ -101,18 +103,18 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
         tx_thread_sleep(1);
         bmi088.GetAccel((uint8_t *) accel);
         bmi088.GetGyro((uint8_t *) gyro);
-        accel_f[0] = accel[0] * LSB_ACC_16B_12G;
-        accel_f[1] = accel[1] * LSB_ACC_16B_12G;
-        accel_f[2] = accel[2] * LSB_ACC_16B_12G;
+        accel_f[0] = (float) accel[0] * LSB_ACC_16B_12G;
+        accel_f[1] = (float) accel[1] * LSB_ACC_16B_12G;
+        accel_f[2] = (float) accel[2] * LSB_ACC_16B_12G;
 
-        /*100Hz Lowpass BWT 2-Order*/
+        /*100Hz LowPass BWT 2-Order*/
         accel_f[0] = filter[0].Update(accel_f[0]);
         accel_f[1] = filter[1].Update(accel_f[1]);
         accel_f[2] = filter[2].Update(accel_f[2]);
 
-        gyro_f[0] = ((float)gyro[0] + gyro_offset[0]) * LSB_GYRO_16B_1000_R;
-        gyro_f[1] = ((float)gyro[1] + gyro_offset[1]) * LSB_GYRO_16B_1000_R;
-        gyro_f[2] = ((float)gyro[2] + gyro_offset[2]) * LSB_GYRO_16B_1000_R;
+        gyro_f[0] = ((float) gyro[0] + gyro_offset[0]) * LSB_GYRO_16B_1000_R;
+        gyro_f[1] = ((float) gyro[1] + gyro_offset[1]) * LSB_GYRO_16B_1000_R;
+        gyro_f[2] = ((float) gyro[2] + gyro_offset[2]) * LSB_GYRO_16B_1000_R;
 
         IMU_QuaternionEKF_Update(quaternion, gyro_f[0], gyro_f[1], gyro_f[2], accel_f[0], accel_f[1], accel_f[2],
                                  dwt.dt_sec());
@@ -139,9 +141,10 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
 }
 
 SRAM_SET_CCM TX_THREAD IMUTemThread;
-SRAM_SET_CCM uint8_t IMUTemThreadStack[1024] = {0};
+SRAM_SET_CCM uint8_t IMUTemThreadStack[512] = {0};
 
 [[noreturn]] void IMUTemThreadFun(ULONG initial_input) {
+    UNUSED(initial_input);
     cDWT dwt;
     PID_Inc_f pid(100.0f, 8.0f, 30.0f, 0.0f, 0.32, 1999, 399, false, 0, true, 0.5f);
     LL_TIM_EnableAllOutputs(TIM10);
@@ -210,7 +213,7 @@ static uint8_t BMI088_Config(cBMI088 &bmi088) {
     tx_thread_sleep(10);
 
     /*Start to config IMU*/
-    /*Enable accelmemter */
+    /*Enable accelerometer */
     bmi088.WriteReg(0x7D, 0x04, BMI088_CS::CS_ACCEL);
     tx_thread_sleep(10);
     /*Normal Mode*/

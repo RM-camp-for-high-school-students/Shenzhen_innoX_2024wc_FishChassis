@@ -23,9 +23,6 @@ SRAM_SET_CCM_UNINT UCHAR Msg_PoolBuf[4096] = {0};
 /*EKF pool*/
 SRAM_SET_CCM TX_BYTE_POOL MathPool;
 SRAM_SET_CCM_UNINT UCHAR Math_PoolBuf[10240] = {0};
-//extern TX_THREAD DebugThread;
-//extern uint8_t DebugThreadStack[256];
-//extern void DebugThreadFun(ULONG initial_input);
 
 extern TX_THREAD IMUThread;
 extern uint8_t IMUThreadStack[1024];
@@ -34,21 +31,21 @@ extern void IMUThreadFun(ULONG initial_input);
 
 
 extern TX_THREAD IMUTemThread;
-extern uint8_t IMUTemThreadStack[1024];
+extern uint8_t IMUTemThreadStack[512];
 
 extern void IMUTemThreadFun(ULONG initial_input);
 
 
 extern TX_THREAD MsgSchedulerThread;
 extern TX_SEMAPHORE MsgCDCSem;
-extern uint8_t MsgSchedulerStack[1024];
+extern uint8_t MsgSchedulerStack[1536];
 
 extern void MsgSchedulerFun(ULONG initial_input);
 
 
 extern TX_THREAD MsgSPIThread;
 extern TX_SEMAPHORE MsgSPITCSem;
-extern uint8_t MsgSPIStack[1024];
+extern uint8_t MsgSPIStack[768];
 
 extern void MsgSPIFun(ULONG initial_input);
 

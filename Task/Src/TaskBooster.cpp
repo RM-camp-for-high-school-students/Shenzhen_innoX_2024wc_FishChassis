@@ -1,22 +1,5 @@
 #include "app_threadx.h"
 #include "TaskBooster.h"
-
-extern TX_THREAD Test01Thread;
-extern uint8_t Test01ThreadStack[2048];
-
-extern void Test01ThreadFun(ULONG initial_input);
-
-extern TX_THREAD Test02Thread;
-extern uint8_t Test02ThreadStack[2048];
-
-extern void Test02ThreadFun(ULONG initial_input);
-
-extern TX_THREAD Test03Thread;
-extern uint8_t Test03ThreadStack[2048];
-
-extern void Test03ThreadFun(ULONG initial_input);
-
-
 extern TX_THREAD WheelThread;
 extern uint8_t WheelThreadStack[1024];
 
@@ -24,13 +7,13 @@ extern void WheelThreadFun(ULONG initial_input);
 
 
 extern TX_THREAD ServoThread;
-extern uint8_t ServoThreadStack[1024];
+extern uint8_t ServoThreadStack[256];
 
 extern void ServoThreadFun(ULONG initial_input);
 
 
 extern TX_THREAD HeartBeatThread;
-extern uint8_t HeartBeatThreadStack[2048];
+extern uint8_t HeartBeatThreadStack[256];
 
 extern void HeartBeatThreadFun(ULONG initial_input);
 
@@ -62,45 +45,6 @@ void Task_Booster() {
 //		sizeof(RemoterQueueStack));
 
 /**********进程***********/
-
-//    tx_thread_create(
-//            &Test01Thread,
-//            (CHAR *) "TEST1",
-//            Test01ThreadFun,
-//            0x0000,
-//            Test01ThreadStack,
-//            sizeof(Test01ThreadStack),
-//            8,
-//            8,
-//            TX_NO_TIME_SLICE,
-//            TX_AUTO_START);
-//
-//    tx_thread_create(
-//            &Test02Thread,
-//            (CHAR *) "TEST2",
-//            Test02ThreadFun,
-//            0x0000,
-//            Test02ThreadStack,
-//            sizeof(Test02ThreadStack),
-//            8,
-//            8,
-//            TX_NO_TIME_SLICE,
-//            TX_AUTO_START);
-
-
-//	 tx_thread_create(
-//	 	&Test03Thread,
-//	 	(CHAR*)"TEST3",
-//	 	Test03ThreadFun,
-//	 	0x0000,
-//	 	Test03ThreadStack,
-//	 	sizeof(Test03ThreadStack),
-//	 	3,
-//	 	3,
-//	 	TX_NO_TIME_SLICE,
-//	 	TX_AUTO_START);
-
-
     tx_thread_create(
             &WheelThread,
             (CHAR *) "Wheel",
