@@ -68,8 +68,8 @@ namespace PID {
         T _prederror;
 
         inline T ForwardLoop() {
-            /* 1阶惯性环节前馈环 G(s)=(1+s)/Ts */
-            return (_ref - _last_ref + 1) / _dt;
+            /* 1阶惯性环节前馈环 G(s)= (1 + s) */
+            return _ref + (_ref - _last_ref) / _dt;
         }
 
     public:
@@ -217,8 +217,8 @@ namespace PID {
 
 
         inline T ForwardLoop() {
-            /* 1阶惯性环节前馈环 G(s)=(1+s)/Ts */
-            return (_ref - _last_ref + 1) / _dt;
+            /* 1阶惯性环节前馈环 G(s)= (1 + s) */
+            return _ref + (_ref - _last_ref) / _dt;
         }
 
     public:

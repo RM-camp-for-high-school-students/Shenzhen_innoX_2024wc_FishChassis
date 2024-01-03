@@ -20,6 +20,7 @@
                 "samplesPerSecond": 4
             },
             "svdFile": ".ocd/STM32F407.svd",
+            "rtos": "auto",
         }
     ]
 }
