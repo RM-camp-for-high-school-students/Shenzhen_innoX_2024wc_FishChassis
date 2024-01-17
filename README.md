@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: qianwan
  * @Date: 2023-12-19 17:41:51
- * @LastEditTime: 2023-12-26 01:45:43
+ * @LastEditTime: 2024-01-18 03:18:27
  * @LastEditors: qianwan
 -->
 # Fish Chassis System
@@ -21,6 +21,8 @@ git clone https://github.com/RM-camp-for-high-school-students/Shenzhen-innoX-202
       - [Communication Module](#communication-module)
       - [Publisher-Subscriber Module](#publisher-subscriber-module)
   - [Construction](#construction)
+  - [Chassis Details](#chassis-details)
+      - [Coordinate](#coordinate)
 
 
 ## Environment
@@ -49,13 +51,6 @@ git clone https://github.com/RM-camp-for-high-school-students/Shenzhen-innoX-202
 ## Construction
 ![Layer](Doc/system_layer.svg)
 
-```
-// We use Right-Forward.
-// Right-Forward is one.
-// Anti-Clockwise is positive.
-// Forward-Left|Right-Forward
-//        0 -- 1 +-
-//        1 ++ 0 -+
-//        2 -+ 3 ++
-//        3 +- 2 --
-```
+## Chassis Details
+#### Coordinate
+*ENU* indicates Right-Forward-Upward would be the correct direction of the chassis.

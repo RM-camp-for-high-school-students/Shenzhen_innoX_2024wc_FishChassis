@@ -16,7 +16,6 @@ extern TX_THREAD HeartBeatThread;
 extern uint8_t HeartBeatThreadStack[256];
 
 extern void HeartBeatThreadFun(ULONG initial_input);
-
 void Task_Booster() {
 
 

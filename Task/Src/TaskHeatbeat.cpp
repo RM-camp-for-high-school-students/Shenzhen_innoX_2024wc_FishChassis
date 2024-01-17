@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: qianwan
+ * @Date: 2023-12-17 23:50:03
+ * @LastEditTime: 2024-01-18 03:16:08
+ * @LastEditors: qianwan
+ */
 #include "main.h"
 #include "DL_F407.h"
 #include "app_threadx.h"
@@ -10,7 +17,7 @@ UCHAR TraceXBuf[TRC_BUF_SIZE];
 SRAM_SET_CCM TX_THREAD HeartBeatThread;
 SRAM_SET_CCM uint8_t HeartBeatThreadStack[256] = {0};
 
-[[noreturn]] void HeartBeatThreadFun(ULONG initial_input) {
+void HeartBeatThreadFun(ULONG initial_input) {
     UNUSED(initial_input);
     tx_thread_sleep(100);
     LL_TIM_EnableAllOutputs(TIM5);

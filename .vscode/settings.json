@@ -1,7 +1,12 @@
 {
+    "C_Cpp.intelliSenseEngine": "disabled",
     "clangd.arguments": [
         "--log=verbose",
         "--header-insertion=never",
-        "--query-driver=D:\\Software\\GNU\\ARM\\12.3 rel1\\bin\\arm-none-eabi-g*"
+        "--query-driver=D:\\Software\\GNU\\ARM\\12.3 rel1\\bin\\arm-none-eabi*",
     ],
+    "clangd.fallbackFlags": [
+        "-ID:\\Software\\GNU\\ARM\\12.3 rel1\\arm-none-eabi\\include",
+        "-ID:\\Software\\GNU\\ARM\\12.3 rel1\\include\\c++\\12.3.1"
+    ], 
 }

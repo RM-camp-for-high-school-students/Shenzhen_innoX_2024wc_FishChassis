@@ -23,6 +23,8 @@
   *Date:  			2023/02/10
   *Describe:		基于测试数据,取消对CMSIS-DSP的依赖
 **********************************************************************************/
+/*Version:  2.0*/
+/*Stepper:  0.2*/
 #pragma once
 #ifndef PID_H_
 #define PID_H_
@@ -291,6 +293,7 @@ namespace PID {
             _ref = 0;
             _last_ref = 0;
             _error = 0;
+            _last_error = 0;
             _integral = 0;
             _out = 0;
         }
