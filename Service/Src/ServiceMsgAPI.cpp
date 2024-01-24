@@ -22,7 +22,7 @@
 #define MSG_DECNT_TIM 25
 #define MSG_RECNT_TIM 30
 #define USB_MAX_LEN UX_SLAVE_REQUEST_DATA_MAX_LENGTH
-#define MSG_SPI_TOTAL_TX_LEN (MAVLINK_MSG_ID_CHS_ODOM_INFO_LEN)
+#define MSG_SPI_TOTAL_TX_LEN (MAVLINK_MSG_ID_CHS_ODOM_INFO_LEN + MAVLINK_MSG_ID_CHS_REMOTER_INFO_LEN )
 #define MSG_SPI_TOTAL_RX_LEN (MAVLINK_MSG_ID_CHS_CTRL_INFO_LEN + MAVLINK_MSG_ID_CHS_SERVOS_INFO_LEN + MAVLINK_MSG_ID_CHS_MANAGE_INFO_LEN)
 
 #if (MSG_SPI_TOTAL_TX_LEN > MSG_SPI_TOTAL_RX_LEN)
@@ -47,15 +47,16 @@ SRAM_SET_CCM_UNINT static mavlink_message_t msg_rx;
 
 SRAM_SET_CCM_UNINT static mavlink_chs_odom_info_t *odom_buf_now = nullptr;
 SRAM_SET_CCM_UNINT static mavlink_chs_odom_info_t chs_odom_info[2];
+SRAM_SET_CCM_UNINT static mavlink_chs_remoter_info_t chs_remoter_info;
 
-SRAM_SET_CCM_UNINT spi_rx_data_processed_t spi_rx_data_processed;
+SRAM_SET_CCM_UNINT Msg_spi_rx_data_processed_t spi_rx_data_processed;
 
 SRAM_SET_CCM_UNINT static uint8_t *usb_buf_now = nullptr;
 SRAM_SET_CCM_UNINT static uint16_t usb_tx_len = 0;
 
 SRAM_SET_CCM_UNINT static uint8_t usb_tx_buf[2][256];
 SRAM_SET_CCM_UNINT static uint8_t usb_rx_buf[USB_MAX_LEN];
-SRAM_SET_CCM_UNINT usb_rx_data_processed_t usb_rx_data_processed;
+SRAM_SET_CCM_UNINT Msg_usb_rx_data_processed_t usb_rx_data_processed;
 
 SRAM_SET_CCM_UNINT static bool control_right_chassis = false; //true: CDC false: SPI
 SRAM_SET_CCM_UNINT static bool control_right_servo = false; //true: CDC false: SPI
@@ -68,12 +69,14 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
     UNUSED(initial_input);
     om_suber_t *sub_ins = om_subscribe(om_find_topic("INS", UINT32_MAX));
     om_suber_t *sub_wheel = om_subscribe(om_find_topic("WheelFDB", UINT32_MAX));
-    om_topic_t *pub_wheel = om_find_topic("WheelControl", UINT32_MAX);
+    om_suber_t *sub_remoter = om_subscribe(om_find_topic("Remoter", UINT32_MAX));
+    om_topic_t *pup_wheel = om_find_topic("WheelControl", UINT32_MAX);
     om_topic_t *pub_servo = om_find_topic("Servo", UINT32_MAX);
 
     //Receive Topic
     Msg_INS_t msg_ins{};
     Msg_WheelFDB_t msg_wheel_fdb{};
+    Msg_Remoter_t msg_remoter{};
 
     //Transmit Topic
     Msg_WheelControl_t msg_wheel_ctrl{};
@@ -90,14 +93,17 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
     odom_buf_now = chs_odom_info;
     usb_buf_now = usb_tx_buf[0];
 
-    tx_thread_sleep(10);
+    tx_thread_sleep(1000);
     while (true) {
         device = &_ux_system_slave->ux_system_slave_device;
 
         /*Message Transmission*/
-        odom_buf_now = (odom_buf_now == chs_odom_info) ? chs_odom_info + 1 : chs_odom_info;
         om_suber_export(sub_ins, &msg_ins, false);
         om_suber_export(sub_wheel, &msg_wheel_fdb, false);
+        om_suber_export(sub_remoter, &msg_remoter, false);
+
+        odom_buf_now = (odom_buf_now == chs_odom_info) ? chs_odom_info + 1 : chs_odom_info;
+
         memcpy(odom_buf_now->quaternion, msg_ins.quaternion, 4 * sizeof(float));
         odom_buf_now->vx =
                 0.25f * (msg_wheel_fdb.mps[0] + msg_wheel_fdb.mps[1] - msg_wheel_fdb.mps[2] - msg_wheel_fdb.mps[3]);
@@ -105,12 +111,27 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
                 0.25f * (-msg_wheel_fdb.mps[0] + msg_wheel_fdb.mps[1] + msg_wheel_fdb.mps[2] - msg_wheel_fdb.mps[3]);
         odom_buf_now->vw = msg_ins.gyro[2];
 
+        if(msg_remoter.Online){
+            chs_remoter_info.switch_messgae = (msg_remoter.Online&0x01) | ((msg_remoter.switch_left << 1)&0x06) | ((msg_remoter.switch_right << 3)&0x18);
+            chs_remoter_info.channel_0 = msg_remoter.ch_0;
+            chs_remoter_info.channel_1 = msg_remoter.ch_1;
+            chs_remoter_info.channel_2 = msg_remoter.ch_2;
+            chs_remoter_info.channel_3 = msg_remoter.ch_3;
+            chs_remoter_info.wheel = msg_remoter.wheel;
+        } else{
+            memset(&chs_remoter_info,0,sizeof(chs_remoter_info));
+        }
+
         /*Prepare mavlink transmission while USB connected.*/
         if (device->ux_slave_device_state == UX_DEVICE_CONFIGURED) {
+            usb_buf_now = (usb_buf_now == usb_tx_buf[0]) ? usb_tx_buf[1] : usb_tx_buf[0];
+
             mavlink_msg_chs_odom_info_encode(CHS_SYSTEM_ID::CHS_ID_CHASSIS, CHS_SYSTEM_ID::CHS_ID_CHASSIS, &msg_tx,
                                              odom_buf_now);
-            usb_buf_now = (usb_buf_now == usb_tx_buf[0]) ? usb_tx_buf[1] : usb_tx_buf[0];
             usb_tx_len = mavlink_msg_to_send_buffer(usb_buf_now, &msg_tx);
+            mavlink_msg_chs_remoter_info_encode(CHS_SYSTEM_ID::CHS_ID_CHASSIS, CHS_SYSTEM_ID::CHS_ID_CHASSIS, &msg_tx,
+                                                &chs_remoter_info);
+            usb_tx_len += mavlink_msg_to_send_buffer(usb_buf_now + usb_tx_len, &msg_rx);
             tx_semaphore_put(&MsgCDCSem);
         }
 
@@ -185,7 +206,7 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
 
         if (publish_wheel) {
             msg_wheel_ctrl.timestamp = tx_time_get();
-            om_publish(pub_wheel, &msg_wheel_ctrl, sizeof(Msg_WheelControl_t), true, false);
+            om_publish(pup_wheel, &msg_wheel_ctrl, sizeof(Msg_WheelControl_t), true, false);
         }
 
         if (_control_right_servo) {
@@ -248,10 +269,11 @@ SRAM_SET_CCM static uint8_t *spi_tx_buf = nullptr;
         || tx_byte_allocate(&ComPool, (VOID **) &spi_tx_buf, MSG_SPI_LEN, TX_NO_WAIT)) {
         Msg_Fault();
     }
-    tx_thread_sleep(200);
+    tx_thread_sleep(2000);
     //Flag of SPI TX
     for (;;) {
         memcpy(spi_tx_buf, odom_buf_now, sizeof(mavlink_chs_odom_info_t));
+        memcpy(spi_tx_buf+sizeof(mavlink_chs_odom_info_t), &chs_remoter_info, sizeof(mavlink_chs_remoter_info_t));
         spi_tx_buf[MSG_SPI_LEN - 1] = MSG_SPI_FLAG;
         spi_tx_buf[MSG_SPI_LEN - 1] = cal_crc8_table(spi_tx_buf, MSG_SPI_LEN);
         HAL_SPI_TransmitReceive_DMA(&hspi2, spi_tx_buf, spi_rx_buf, MSG_SPI_LEN);

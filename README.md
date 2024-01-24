@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: qianwan
  * @Date: 2023-12-19 17:41:51
- * @LastEditTime: 2024-01-18 03:18:27
+ * @LastEditTime: 2024-01-20 14:28:21
  * @LastEditors: qianwan
 -->
 # Fish Chassis System
@@ -10,7 +10,7 @@
 *InnoxSZ 2024 Robotics Winter Camp for High School Students.* 
 
 Get this repository by:   
-``` bash
+``` bash                                         
 git clone https://github.com/RM-camp-for-high-school-students/Shenzhen-innoX-2024wc-chassis.git --recursive
 ```
 
@@ -21,7 +21,7 @@ git clone https://github.com/RM-camp-for-high-school-students/Shenzhen-innoX-202
       - [Communication Module](#communication-module)
       - [Publisher-Subscriber Module](#publisher-subscriber-module)
   - [Construction](#construction)
-  - [Chassis Details](#chassis-details)
+  - [General Information](#general-information)
       - [Coordinate](#coordinate)
 
 
@@ -51,6 +51,8 @@ git clone https://github.com/RM-camp-for-high-school-students/Shenzhen-innoX-202
 ## Construction
 ![Layer](Doc/system_layer.svg)
 
-## Chassis Details
+## General Information
 #### Coordinate
-*ENU* indicates Right-Forward-Upward would be the correct direction of the chassis.
+***RFU*** indicates Right-Forward-Upward would be the correct direction of the chassis.   
+***ZYX*** rotaion order is implemented on robot.
+***RF*** is the ID-0 wheel, and ID increased counterclockwise.

@@ -49,6 +49,14 @@ extern uint8_t MsgSPIStack[768];
 
 extern void MsgSPIFun(ULONG initial_input);
 
+
+extern TX_THREAD RemoterThread;
+extern TX_SEMAPHORE RemoterThreadSem;
+extern uint8_t RemoterThreadStack[1024];
+
+extern void RemoterThreadFun(ULONG initial_input);
+
+
 void Service_Booster(void) {
     /**********Memory pool in ram***********/
     /*Communication pool in ram*/
@@ -79,6 +87,12 @@ void Service_Booster(void) {
     tx_semaphore_create(
             &MsgCDCSem,
             (CHAR *) "MsgCDCSem",
+            0
+    );
+
+    tx_semaphore_create(
+            &RemoterThreadSem,
+            (CHAR *) "RemoterThreadSem",
             0
     );
 
@@ -132,14 +146,26 @@ void Service_Booster(void) {
             TX_AUTO_START);
 
     tx_thread_create(
+            &RemoterThread,
+            (CHAR *) "Remoter",
+            RemoterThreadFun,
+            0x0000,
+            RemoterThreadStack,
+            sizeof(RemoterThreadStack),
+            4,
+            4,
+            TX_NO_TIME_SLICE,
+            TX_AUTO_START);
+
+    tx_thread_create(
             &MsgSPIThread,
             (CHAR *) "MsgSPI",
             MsgSPIFun,
             0x0000,
             MsgSPIStack,
             sizeof(MsgSPIStack),
-            5,
-            5,
+            4,
+            4,
             TX_NO_TIME_SLICE,
             TX_AUTO_START);
 

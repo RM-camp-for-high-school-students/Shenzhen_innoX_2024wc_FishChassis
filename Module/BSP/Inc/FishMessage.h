@@ -37,7 +37,7 @@ struct Msg_Servo_t {
     uint64_t timestamp;
 };
 
-struct usb_rx_data_processed_t{
+struct Msg_usb_rx_data_processed_t{
     mavlink_chs_ctrl_info_t chs_ctrl_info;
     mavlink_chs_motor_info_t chs_motor_info;
     mavlink_chs_servos_info_t chs_servos_info;
@@ -45,11 +45,24 @@ struct usb_rx_data_processed_t{
     bool update_list_in_order[4]; // 0:chs_ctrl_info 1:chs_motor_info 2:chs_servos_info 3:chs_manage_info
 };
 
-struct spi_rx_data_processed_t{
+struct Msg_spi_rx_data_processed_t{
     mavlink_chs_motor_info_t chs_motor_info;
     mavlink_chs_servos_info_t chs_servos_info;
     mavlink_chs_manage_info_t chs_manage_info;
     bool update;
 };
+
+struct Msg_Remoter_t{
+    uint8_t Online:2;
+    uint8_t switch_left:3;
+    uint8_t switch_right:3;
+    int16_t ch_0;
+    int16_t ch_1;
+    int16_t ch_2;
+    int16_t ch_3;
+    int16_t wheel;
+    uint64_t timestamp;
+};
+
 #pragma pack(pop) //恢复对齐状态
 #endif

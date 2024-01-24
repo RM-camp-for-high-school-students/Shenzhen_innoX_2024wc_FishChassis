@@ -11,7 +11,6 @@ extern "C" {
 */
 #define SRAM_SET_CCM        __attribute__((section(".ccmram")))
 #define SRAM_SET_CCM_UNINT  __attribute__((section(".ccmram_uninit")))
-//#define SRAM_SET_CCM_UNINT  __attribute__((section(".ccmram")))
 #ifdef __cplusplus
 }
 #endif
