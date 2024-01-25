@@ -19,6 +19,7 @@ uint8_t data_rx_buf[20];
     for (;;) {
         if (tx_semaphore_get(&RemoterThreadSem, 100) != TX_SUCCESS) {
             memset(&msg_remoter, 0, sizeof(Msg_Remoter_t));
+            om_publish(remoter_topic, &msg_remoter, sizeof(msg_remoter), true, false);
             tx_semaphore_get(&RemoterThreadSem, TX_WAIT_FOREVER);
         } else {
             msg_remoter.Online = 1;

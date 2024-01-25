@@ -94,7 +94,6 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
     odom_buf_now = chs_odom_info;
     usb_buf_now = usb_tx_buf[0];
 
-    tx_thread_sleep(1000);
     while (true) {
         device = &_ux_system_slave->ux_system_slave_device;
 
@@ -282,7 +281,7 @@ SRAM_SET_CCM static uint8_t *spi_tx_buf = nullptr;
         || tx_byte_allocate(&ComPool, (VOID **) &spi_tx_buf, MSG_SPI_LEN, TX_NO_WAIT)) {
         Msg_Fault();
     }
-    tx_thread_sleep(2000);
+    tx_thread_sleep(10);
     //Flag of SPI TX
     for (;;) {
         memcpy(spi_tx_buf, odom_buf_now, sizeof(mavlink_chs_odom_info_t));
@@ -355,7 +354,7 @@ extern UX_SLAVE_CLASS_CDC_ACM *cdc_acm;
     mavlink_status_t r_mavlink_status;
 
     UX_PARAMETER_NOT_USED(arg);
-    tx_thread_sleep(100);
+    tx_thread_sleep(10);
 
     while (true) {
         device = &_ux_system_slave->ux_system_slave_device;
@@ -423,7 +422,7 @@ extern UX_SLAVE_CLASS_CDC_ACM *cdc_acm;
     UX_PARAMETER_NOT_USED(thread_input);
 
     /*Wait for mutex*/
-    tx_thread_sleep(100);
+    tx_thread_sleep(10);
     while (true) {
         /* Check if device is configured */
         device = &_ux_system_slave->ux_system_slave_device;

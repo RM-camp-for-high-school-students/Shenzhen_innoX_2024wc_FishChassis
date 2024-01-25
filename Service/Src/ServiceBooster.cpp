@@ -158,18 +158,6 @@ void Service_Booster(void) {
             TX_AUTO_START);
 
     tx_thread_create(
-            &MsgSPIThread,
-            (CHAR *) "MsgSPI",
-            MsgSPIFun,
-            0x0000,
-            MsgSPIStack,
-            sizeof(MsgSPIStack),
-            4,
-            4,
-            TX_NO_TIME_SLICE,
-            TX_AUTO_START);
-
-    tx_thread_create(
             &MsgSchedulerThread,
             (CHAR *) "MsgScheduler",
             MsgSchedulerFun,
@@ -178,6 +166,18 @@ void Service_Booster(void) {
             sizeof(MsgSchedulerStack),
             5,
             5,
+            TX_NO_TIME_SLICE,
+            TX_AUTO_START);
+
+    tx_thread_create(
+            &MsgSPIThread,
+            (CHAR *) "MsgSPI",
+            MsgSPIFun,
+            0x0000,
+            MsgSPIStack,
+            sizeof(MsgSPIStack),
+            4,
+            4,
             TX_NO_TIME_SLICE,
             TX_AUTO_START);
 }
