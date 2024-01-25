@@ -12,7 +12,8 @@ extern uint32_t fishPrintf(uint8_t *buf, const char *str, ...);
 
 struct Msg_INS_t {
     float quaternion[4];
-    /*Y-P-R*/
+    /*R-F-U*/
+    float accel[3];
     float gyro[3];
     uint64_t timestamp;
 };

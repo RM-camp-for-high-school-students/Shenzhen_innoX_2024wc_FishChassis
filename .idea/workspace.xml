@@ -23,16 +23,9 @@
   <component name="ChangeListManager">
     <list default="true" id="babba83a-2a78-4ae1-bf29-388873eadff8" name="更改" comment="Fix a bug in pid controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Inc/DL_F407.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Inc/DL_F407.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Doc/serial_test_chassis.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Doc/serial_test_chassis.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FishChassis.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/FishChassis.ioc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Module/BSP/Inc/FishMessage.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/BSP/Inc/FishMessage.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Module/Mavlink" beforeDir="false" afterPath="$PROJECT_DIR$/Module/Mavlink" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceBooster.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/Src/ServiceIMU.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceIMU.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/Src/TaskBooster.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Src/TaskBooster.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1702,7 +1695,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CPPToolchains",
+    "settings.editor.selected.configurable": "CMakeSettings",
     "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -1717,17 +1710,17 @@
     <option name="rtosType" value="Azure RTOS ThreadX" />
   </component>
   <component name="RunManager" selected="OpenOCD 下载并运行.OCD FishChassis">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FishChassis.elf" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="FishChassis.elf" CONFIG_NAME="RelWithDebInfo-MinGW-STM32" RUN_TARGET_PROJECT_NAME="FishChassis" RUN_TARGET_NAME="FishChassis.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="OneMessage" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="OneMessage" CONFIG_NAME="RelWithDebInfo-MinGW-STM32">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -1789,6 +1782,7 @@
       <workItem from="1704947948146" duration="49000" />
       <workItem from="1705521259752" duration="712000" />
       <workItem from="1706083489851" duration="18924000" />
+      <workItem from="1706171278506" duration="2709000" />
     </task>
     <task id="LOCAL-00001" summary="Fix a bug in pid controller">
       <option name="closed" value="true" />
@@ -1825,18 +1819,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Fix a bug in pid controller" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp</url>
-          <line>119</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="com.jetbrains.cidr.embedded.openocd.conf.type">
         <watch expression="chs_remoter_info" />
+        <watch expression="usb_tx_len" />
       </configuration>
     </watches-manager>
   </component>

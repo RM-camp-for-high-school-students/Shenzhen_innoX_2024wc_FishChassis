@@ -108,6 +108,7 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
         accel_f[2] = (float) accel[2] * LSB_ACC_16B_12G;
 
         /*100Hz LowPass BWT 2-Order*/
+        /*Watch out! Orientation R-F-U*/
         accel_f[0] = filter[0].Update(accel_f[0]);
         accel_f[1] = filter[1].Update(accel_f[1]);
         accel_f[2] = filter[2].Update(accel_f[2]);
@@ -122,7 +123,7 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
         /*Message*/
         msg_ins.timestamp = tx_time_get();
         memcpy(msg_ins.quaternion, quaternion, sizeof(quaternion));
-        /*Y-P-R*/
+        /*R-F-U*/
 //        msg_ins.Euler[0] = atan2f(2.0f * (quaternion[0] * quaternion[3] + quaternion[1] * quaternion[2]),
 //                                  2.0f * (quaternion[0] * quaternion[0] + quaternion[1] * quaternion[1]) - 1.0f) *
 //                           57.295779513f;
@@ -132,6 +133,9 @@ SRAM_SET_CCM uint8_t IMUThreadStack[1024] = {0};
 //        msg_ins.Euler[2] =
 //                asinf(-2.0f * (quaternion[1] * quaternion[3] - quaternion[0] * quaternion[2])) * 57.295779513f;
 
+        msg_ins.accel[0] = accel_f[0];
+        msg_ins.accel[1] = accel_f[1];
+        msg_ins.accel[2] = accel_f[2];
         msg_ins.gyro[0] = gyro_f[0];
         msg_ins.gyro[1] = gyro_f[1];
         msg_ins.gyro[2] = gyro_f[2];

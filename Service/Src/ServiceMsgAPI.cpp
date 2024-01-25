@@ -47,6 +47,7 @@ SRAM_SET_CCM_UNINT static mavlink_message_t msg_rx;
 
 SRAM_SET_CCM_UNINT static mavlink_chs_odom_info_t *odom_buf_now = nullptr;
 SRAM_SET_CCM_UNINT static mavlink_chs_odom_info_t chs_odom_info[2];
+SRAM_SET_CCM_UNINT static mavlink_chs_imu_info_t chs_imu_info;
 SRAM_SET_CCM_UNINT static mavlink_chs_remoter_info_t chs_remoter_info;
 
 SRAM_SET_CCM_UNINT Msg_spi_rx_data_processed_t spi_rx_data_processed;
@@ -54,7 +55,7 @@ SRAM_SET_CCM_UNINT Msg_spi_rx_data_processed_t spi_rx_data_processed;
 SRAM_SET_CCM_UNINT static uint8_t *usb_buf_now = nullptr;
 SRAM_SET_CCM_UNINT static uint16_t usb_tx_len = 0;
 
-SRAM_SET_CCM_UNINT static uint8_t usb_tx_buf[2][256];
+SRAM_SET_CCM_UNINT static uint8_t usb_tx_buf[2][384];
 SRAM_SET_CCM_UNINT static uint8_t usb_rx_buf[USB_MAX_LEN];
 SRAM_SET_CCM_UNINT Msg_usb_rx_data_processed_t usb_rx_data_processed;
 
@@ -102,8 +103,8 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
         om_suber_export(sub_wheel, &msg_wheel_fdb, false);
         om_suber_export(sub_remoter, &msg_remoter, false);
 
+        /*Set odometer information*/
         odom_buf_now = (odom_buf_now == chs_odom_info) ? chs_odom_info + 1 : chs_odom_info;
-
         memcpy(odom_buf_now->quaternion, msg_ins.quaternion, 4 * sizeof(float));
         odom_buf_now->vx =
                 0.25f * (msg_wheel_fdb.mps[0] + msg_wheel_fdb.mps[1] - msg_wheel_fdb.mps[2] - msg_wheel_fdb.mps[3]);
@@ -111,6 +112,15 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
                 0.25f * (-msg_wheel_fdb.mps[0] + msg_wheel_fdb.mps[1] + msg_wheel_fdb.mps[2] - msg_wheel_fdb.mps[3]);
         odom_buf_now->vw = msg_ins.gyro[2];
 
+        /*Set imu information*/
+        chs_imu_info.accel[0]=msg_ins.accel[0];
+        chs_imu_info.accel[1]=msg_ins.accel[1];
+        chs_imu_info.accel[2]=msg_ins.accel[2];
+        chs_imu_info.gyro[0]=msg_ins.gyro[0];
+        chs_imu_info.gyro[1]=msg_ins.gyro[1];
+        chs_imu_info.gyro[2]=msg_ins.gyro[2];
+
+        /*Set remoter information*/
         if(msg_remoter.Online){
             chs_remoter_info.switch_messgae = (msg_remoter.Online&0x01) | ((msg_remoter.switch_left << 1)&0x06) | ((msg_remoter.switch_right << 3)&0x18);
             chs_remoter_info.channel_0 = msg_remoter.ch_0;
@@ -129,6 +139,9 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
             mavlink_msg_chs_odom_info_encode(CHS_SYSTEM_ID::CHS_ID_CHASSIS, CHS_SYSTEM_ID::CHS_ID_CHASSIS, &msg_tx,
                                              odom_buf_now);
             usb_tx_len = mavlink_msg_to_send_buffer(usb_buf_now, &msg_tx);
+            mavlink_msg_chs_imu_info_encode(CHS_SYSTEM_ID::CHS_ID_CHASSIS, CHS_SYSTEM_ID::CHS_ID_CHASSIS, &msg_tx,
+                                            &chs_imu_info);
+            usb_tx_len += mavlink_msg_to_send_buffer(usb_buf_now + usb_tx_len, &msg_tx);
             mavlink_msg_chs_remoter_info_encode(CHS_SYSTEM_ID::CHS_ID_CHASSIS, CHS_SYSTEM_ID::CHS_ID_CHASSIS, &msg_tx,
                                                 &chs_remoter_info);
             usb_tx_len += mavlink_msg_to_send_buffer(usb_buf_now + usb_tx_len, &msg_rx);
