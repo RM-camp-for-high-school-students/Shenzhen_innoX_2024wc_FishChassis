@@ -113,6 +113,11 @@ bool cFlashCore::flash_memcpy(Flash_Element_ID element_id, uint8_t *dst, bool en
     if (element_id >= Element_ID_MAX) {
         return false;
     }
+    
+    if ( _flash_list[element_id].address == nullptr ){
+        return false;
+    }
+
     flash_memcpy(dst, _flash_list[element_id].address, _flash_list[element_id].bytes);
 
     if (en_crc) {
