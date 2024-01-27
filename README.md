@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: qianwan
  * @Date: 2023-12-19 17:41:51
- * @LastEditTime: 2024-01-28 02:29:47
+ * @LastEditTime: 2024-01-28 02:35:16
  * @LastEditors: qianwan
 -->
 # FishChassis System
@@ -73,6 +73,7 @@ Related Projects:
 ## General Information
 #### Orientation
 ![Construction](Doc/orientation.svg "Figure 1 Robot Orientation")
+
 ***RFU*** indicates that Right-Forward-Upward is the correct orientation for the chassis.
 ***Anticlockwise*** rotation direction is positive.
 ***ZYX*** rotation order is implemented on the robot.
@@ -82,9 +83,11 @@ Related Projects:
 
 #### Robot System Construction
 ![Construction](Doc/embedded_construction_here.svg "Figure 2 Robot System Block Diagram")
+
 FishChassis serves as the foundational layer in the entire robot system. It facilitates basic closed-loop control for actuators and offers a control API for the upper layers.
 
 Here are the details:
+
 ![Layer](Doc/system_layer.svg "Figure 3 FishChassis Block Diagram")
 
 - Hardware Layer
