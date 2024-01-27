@@ -18,7 +18,7 @@ qianwan233@foxmail.com
 
 Get this repository by:   
 ```bash                                     
-git clone https://github.com/RM-camp-for-high-school-students/Shenzhen-innoX-2024wc-chassis.git --recursive
+git clone https://github.com/RM-camp-for-high-school-students/Shenzhen-innoX-2024wc-chassis.git --recursive --depth=1
 ```
 
 Related Projects:
