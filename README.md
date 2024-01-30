@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: qianwan
  * @Date: 2023-12-19 17:41:51
- * @LastEditTime: 2024-01-28 02:35:16
+ * @LastEditTime: 2024-01-30 13:58:35
  * @LastEditors: qianwan
 -->
 # FishChassis System
@@ -82,6 +82,7 @@ Related Projects:
 
 
 #### Robot System Construction
+
 ![Construction](Doc/embedded_construction_here.svg "Figure 2 Robot System Block Diagram")
 
 FishChassis serves as the foundational layer in the entire robot system. It facilitates basic closed-loop control for actuators and offers a control API for the upper layers.
@@ -98,7 +99,11 @@ Here are the details:
   - Supports advanced system services for apps, such as publisher-subscriber modules, USB-ACM service, etc.
 - Task APP Layer
   - Implements user tasks to execute functions.
+
+Here shows how system startup:
   
+![Layer](Doc/startup.svg "Figure 4 Startup Process")
+
 #### Communication
 - USB-ACM
   - Operates  FishCom
