@@ -143,7 +143,7 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
             usb_tx_len += mavlink_msg_to_send_buffer(usb_buf_now + usb_tx_len, &msg_tx);
             mavlink_msg_chs_remoter_info_encode(CHS_SYSTEM_ID::CHS_ID_CHASSIS, CHS_SYSTEM_ID::CHS_ID_CHASSIS, &msg_tx,
                                                 &chs_remoter_info);
-            usb_tx_len += mavlink_msg_to_send_buffer(usb_buf_now + usb_tx_len, &msg_rx);
+            usb_tx_len += mavlink_msg_to_send_buffer(usb_buf_now + usb_tx_len, &msg_tx);
             tx_semaphore_put(&MsgCDCSem);
         }
 
