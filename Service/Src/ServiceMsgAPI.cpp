@@ -22,8 +22,8 @@
 #define MSG_DECNT_TIM 25
 #define MSG_RECNT_TIM 30
 #define USB_MAX_LEN UX_SLAVE_REQUEST_DATA_MAX_LENGTH
-#define MSG_SPI_TOTAL_TX_LEN (MAVLINK_MSG_ID_CHS_ODOM_INFO_LEN + MAVLINK_MSG_ID_CHS_REMOTER_INFO_LEN )
-#define MSG_SPI_TOTAL_RX_LEN (MAVLINK_MSG_ID_CHS_CTRL_INFO_LEN + MAVLINK_MSG_ID_CHS_SERVOS_INFO_LEN + MAVLINK_MSG_ID_CHS_MANAGE_INFO_LEN)
+#define MSG_SPI_TOTAL_TX_LEN (MAVLINK_MSG_ID_CHS_ODOM_INFO_LEN + MSG_MOTOR_EXTERN_FDB_LEN + MAVLINK_MSG_ID_CHS_REMOTER_INFO_LEN )
+#define MSG_SPI_TOTAL_RX_LEN (MSG_MOTOR_EXTERN_CTRL_LEN + MAVLINK_MSG_ID_CHS_SERVOS_INFO_LEN + MAVLINK_MSG_ID_CHS_MANAGE_INFO_LEN)
 
 #if (MSG_SPI_TOTAL_TX_LEN > MSG_SPI_TOTAL_RX_LEN)
 #define MSG_SPI_LEN (MSG_SPI_TOTAL_TX_LEN + 1)
@@ -49,6 +49,8 @@ SRAM_SET_CCM_UNINT static mavlink_chs_odom_info_t *odom_buf_now = nullptr;
 SRAM_SET_CCM_UNINT static mavlink_chs_odom_info_t chs_odom_info[2];
 SRAM_SET_CCM_UNINT static mavlink_chs_imu_info_t chs_imu_info;
 SRAM_SET_CCM_UNINT static mavlink_chs_remoter_info_t chs_remoter_info;
+SRAM_SET_CCM_UNINT static Msg_MotorExternFDB_t chs_motor_extern_fdb_info;
+
 
 SRAM_SET_CCM_UNINT Msg_spi_rx_data_processed_t spi_rx_data_processed;
 
@@ -110,6 +112,9 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
         odom_buf_now->vy =
                 0.25f * (-msg_wheel_fdb.mps[0] + msg_wheel_fdb.mps[1] + msg_wheel_fdb.mps[2] - msg_wheel_fdb.mps[3]);
         odom_buf_now->vw = msg_ins.gyro[2];
+
+        chs_motor_extern_fdb_info.motor[0] = msg_wheel_fdb.extern_rpm[0];
+        chs_motor_extern_fdb_info.motor[1] = msg_wheel_fdb.extern_rpm[1];
 
         /*Set imu information*/
         chs_imu_info.accel[0]=msg_ins.accel[0];
@@ -201,7 +206,7 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
                 msg_wheel_ctrl.mps[1] = (float) usb_rx_data_processed.chs_motor_info.motor[1] * RPM_CONST_REV;
                 msg_wheel_ctrl.mps[2] = (float) usb_rx_data_processed.chs_motor_info.motor[2] * RPM_CONST_REV;
                 msg_wheel_ctrl.mps[3] = (float) usb_rx_data_processed.chs_motor_info.motor[3] * RPM_CONST_REV;
-
+                msg_wheel_ctrl.enable_extern = false;
                 publish_wheel = true;
             }
             if (usb_rx_data_processed.update_list_in_order[3]) {
@@ -212,6 +217,9 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
             msg_wheel_ctrl.mps[1] = (float) spi_rx_data_processed.chs_motor_info.motor[1] * RPM_CONST_REV;
             msg_wheel_ctrl.mps[2] = (float) spi_rx_data_processed.chs_motor_info.motor[2] * RPM_CONST_REV;
             msg_wheel_ctrl.mps[3] = (float) spi_rx_data_processed.chs_motor_info.motor[3] * RPM_CONST_REV;
+            msg_wheel_ctrl.extern_motor[0] = (float) spi_rx_data_processed.chs_motor_info.motor[4] * RPM_CONST_REV;
+            msg_wheel_ctrl.extern_motor[1] = (float) spi_rx_data_processed.chs_motor_info.motor[5] * RPM_CONST_REV;
+            msg_wheel_ctrl.enable_extern = true;
 
             publish_wheel = true;
         }
@@ -220,6 +228,7 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
             msg_wheel_ctrl.timestamp = tx_time_get();
             om_publish(pup_wheel, &msg_wheel_ctrl, sizeof(Msg_WheelControl_t), true, false);
         }
+        tx_thread_sleep(1);
 
         if (_control_right_servo) {
             if (usb_rx_data_processed.update_list_in_order[2]) {
@@ -261,7 +270,7 @@ SRAM_SET_CCM uint8_t MsgSchedulerStack[1536] = {0};
         }
 
         //100Hz
-        tx_thread_sleep(10);
+        tx_thread_sleep(9);
     }
 }
 
@@ -285,7 +294,8 @@ SRAM_SET_CCM static uint8_t *spi_tx_buf = nullptr;
     //Flag of SPI TX
     for (;;) {
         memcpy(spi_tx_buf, odom_buf_now, sizeof(mavlink_chs_odom_info_t));
-        memcpy(spi_tx_buf+sizeof(mavlink_chs_odom_info_t), &chs_remoter_info, sizeof(mavlink_chs_remoter_info_t));
+        memcpy(spi_tx_buf+sizeof(mavlink_chs_odom_info_t), &chs_motor_extern_fdb_info, sizeof(chs_motor_extern_fdb_info));
+        memcpy(spi_tx_buf+sizeof(mavlink_chs_odom_info_t)+sizeof(chs_motor_extern_fdb_info), &chs_remoter_info, sizeof(mavlink_chs_remoter_info_t));
         spi_tx_buf[MSG_SPI_LEN - 1] = MSG_SPI_FLAG;
         spi_tx_buf[MSG_SPI_LEN - 1] = cal_crc8_table(spi_tx_buf, MSG_SPI_LEN);
         HAL_SPI_TransmitReceive_DMA(&hspi2, spi_tx_buf, spi_rx_buf, MSG_SPI_LEN);
@@ -320,11 +330,11 @@ SRAM_SET_CCM static uint8_t *spi_tx_buf = nullptr;
         control_right_servo = false;
         control_right_chassis = false;
 
-        memcpy(&spi_rx_data_processed.chs_motor_info, spi_rx_buf, sizeof(mavlink_chs_motor_info_t));
-        memcpy(&spi_rx_data_processed.chs_servos_info, spi_rx_buf + sizeof(mavlink_chs_motor_info_t),
+        memcpy(&spi_rx_data_processed.chs_motor_info, spi_rx_buf, sizeof(Msg_MotorExtern_t));
+        memcpy(&spi_rx_data_processed.chs_servos_info, spi_rx_buf + sizeof(Msg_MotorExtern_t),
                sizeof(mavlink_chs_servos_info_t));
         memcpy(&spi_rx_data_processed.chs_manage_info,
-               spi_rx_buf + sizeof(mavlink_chs_motor_info_t) + sizeof(mavlink_chs_servos_info_t),
+               spi_rx_buf + sizeof(Msg_MotorExtern_t) + sizeof(mavlink_chs_servos_info_t),
                sizeof(mavlink_chs_manage_info_t));
         spi_rx_data_processed.update = true;
     }

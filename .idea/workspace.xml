@@ -23,7 +23,9 @@
   <component name="ChangeListManager">
     <list default="true" id="babba83a-2a78-4ae1-bf29-388873eadff8" name="更改" comment="Fix a bug in pid controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module/BSP/Inc/FishMessage.h" beforeDir="false" afterPath="$PROJECT_DIR$/Module/BSP/Inc/FishMessage.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Src/ServiceMsgAPI.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/Src/TaskWheel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Task/Src/TaskWheel.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1718,6 +1720,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OCD FishChassis" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FishChassis" TARGET_NAME="FishChassis.elf" CONFIG_NAME="RelWithDebInfo-MinGW-STM32" version="1" RUN_TARGET_PROJECT_NAME="FishChassis" RUN_TARGET_NAME="FishChassis.elf">
       <openocd version="1" gdb-port="3333" telnet-port="4444" board-config="D:\WorkSpace\Innox2024w\FishChassis\.ocd\daplink.cfg" reset-type="INIT" download-type="UPDATED_ONLY">
         <debugger toolchainName="MinGW-STM32" />
@@ -1785,6 +1792,8 @@
       <workItem from="1706593685009" duration="2082000" />
       <workItem from="1706616772828" duration="613000" />
       <workItem from="1706671974411" duration="209000" />
+      <workItem from="1706789993722" duration="233000" />
+      <workItem from="1706840979466" duration="4922000" />
     </task>
     <task id="LOCAL-00001" summary="Fix a bug in pid controller">
       <option name="closed" value="true" />

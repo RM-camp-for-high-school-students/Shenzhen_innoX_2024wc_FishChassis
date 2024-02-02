@@ -18,7 +18,8 @@ using namespace PID;
 using namespace Wheel;
 
 static bool can_filter_config();
-static M2006_t m2006[4];
+
+static M2006_t m2006[6];
 
 SRAM_SET_CCM TX_THREAD WheelThread;
 SRAM_SET_CCM uint8_t WheelThreadStack[1024] = {0};
@@ -27,18 +28,21 @@ SRAM_SET_CCM uint8_t WheelThreadStack[1024] = {0};
 [[noreturn]] void WheelThreadFun(ULONG initial_input) {
     /*Creat Wheel Topic*/
     om_config_topic(nullptr, "CA", "WheelControl", sizeof(Msg_WheelControl_t));
-    om_topic_t* msg_fdb =  om_config_topic(nullptr, "CA", "WheelFDB", sizeof(Msg_WheelFDB_t));
+    om_topic_t *msg_fdb = om_config_topic(nullptr, "CA", "WheelFDB", sizeof(Msg_WheelFDB_t));
     bool ctr_enable = false;
     uint32_t los_cnt = 0;
     Msg_WheelControl_t wheel_ctr{};
     Msg_WheelFDB_t wheel_fdb{};
 
     uint8_t can_data[8];
+    uint8_t can_data_extern[8];
+
     uint32_t *can_mail_box = nullptr;
     CAN_TxHeaderTypeDef tx_header = {.StdId=0x200, .IDE=CAN_ID_STD, .RTR=CAN_RTR_DATA, .DLC=8};
+    CAN_TxHeaderTypeDef tx_header_extern = {.StdId=0x1FF, .IDE=CAN_ID_STD, .RTR=CAN_RTR_DATA, .DLC=8};
 
-    cDWT dwt[4];
-    PID_Inc_f wheel_pid[4];
+    cDWT dwt[6];
+    PID_Inc_f wheel_pid[6];
     for (auto &i: wheel_pid) {
         i.SetParam(
                 0.025, 0.001, 0.0, 0.0, 0.04, 10000.0, -10000.0, false, 0, false, 0
@@ -60,7 +64,7 @@ SRAM_SET_CCM uint8_t WheelThreadStack[1024] = {0};
 
         if (ctr_enable) {
             for (int i = 0; i < 4; ++i) {
-                wheel_pid[i].SetRef(wheel_ctr.mps[i]*RPM_CONST);
+                wheel_pid[i].SetRef(wheel_ctr.mps[i] * RPM_CONST);
                 wheel_pid[i].Calculate(m2006[i].rpm, dwt[i].dt_sec());
                 can_data[i * 2] = (uint8_t) ((int16_t) wheel_pid[i].Out() >> 8);
                 can_data[i * 2 + 1] = (uint8_t) ((int16_t) wheel_pid[i].Out() & 0xFF);
@@ -70,12 +74,31 @@ SRAM_SET_CCM uint8_t WheelThreadStack[1024] = {0};
         }
         HAL_CAN_AddTxMessage(&hcan1, &tx_header, can_data, can_mail_box);
 
+        if (wheel_ctr.enable_extern) {
+            if (ctr_enable) {
+                for (int i = 0; i < 2; ++i) {
+                    wheel_pid[4 + i].SetRef(wheel_ctr.extern_motor[i] * RPM_CONST);
+                    wheel_pid[4 + i].Calculate(m2006[4 + i].rpm, dwt[4 + i].dt_sec());
+                    can_data_extern[i * 2] = (uint8_t) ((int16_t) wheel_pid[4 + i].Out() >> 8);
+                    can_data_extern[i * 2 + 1] = (uint8_t) ((int16_t) wheel_pid[4 + i].Out() & 0xFF);
+                }
+            } else {
+                memset(can_data_extern, 0, sizeof(can_data));
+            }
+            HAL_CAN_AddTxMessage(&hcan1, &tx_header_extern, can_data_extern, can_mail_box);
+        }
+
+
         /*Publish feedback*/
         for (int i = 0; i < 4; ++i) {
-            wheel_fdb.mps[i] = (float)m2006[i].rpm * RPM_CONST_REV;
+            wheel_fdb.mps[i] = (float) m2006[i].rpm * RPM_CONST_REV;
         }
+        for (int i = 0; i < 2; ++i) {
+            wheel_fdb.extern_rpm[i] = m2006[4 + i].rpm;
+        }
+
         wheel_fdb.timestamp = tx_time_get();
-        om_publish(msg_fdb,(uint8_t*)&wheel_fdb,sizeof(Msg_WheelFDB_t), true, false);
+        om_publish(msg_fdb, (uint8_t *) &wheel_fdb, sizeof(Msg_WheelFDB_t), true, false);
 
         /*250Hz close-loop*/
         tx_thread_sleep(4);
