@@ -1,8 +1,8 @@
 <!--
- * @Description: 
+ * @Description: Readme file
  * @Author: qianwan
  * @Date: 2023-12-19 17:41:51
- * @LastEditTime: 2024-01-30 13:58:35
+ * @LastEditTime: 2024-03-04 03:02:52
  * @LastEditors: qianwan
 -->
 # FishChassis System
@@ -14,15 +14,15 @@
 >Author: qianwan.Jin@2024
 qianwan233@foxmail.com
 
-
-
 Get this repository by:   
 ```bash                                     
 git clone https://github.com/RM-camp-for-high-school-students/Shenzhen-innoX-2024wc-chassis.git --recursive --depth=1
 ```
 
 Related Projects:
-- [LibFishChassis - Esp32 Mixly Arduino Package](https://github.com/Q1anWan/LibFishChassis)
+- [LibFishChassis - ESP32 Mixly Arduino Package](https://github.com/Q1anWan/LibFishChassis)
+- [FishDistribution - ESP32 Board PCBA](https://github.com/RM-camp-for-high-school-students/Shenzhen_innoX_2024wc_FishDistribution)
+- [FishRefereeEmbedded - Embedded System of Refer System](https://github.com/RM-camp-for-high-school-students/Shenzhen-innoX-2024wc-FishRefereeEmbedded)
 - [FishCom - Communication Protocol](https://github.com/Q1anWan/FishCom)
 - [Innox2024-WC-WS - ROS Work Space](https://github.com/RM-camp-for-high-school-students/Shenzhen_innoX_2024wc_ws)
 
@@ -33,6 +33,7 @@ Related Projects:
       - [Hardware](#hardware)
       - [Softwares](#softwares)
       - [Packages](#packages)
+      - [Additional Funciton](#additional-funciton)
   - [General Information](#general-information)
       - [Orientation](#orientation)
       - [Robot System Construction](#robot-system-construction)
@@ -69,10 +70,17 @@ Related Projects:
 - [OneMessage - Message System](Module/OneMessage/README.md)
 - [WHX EKF - AHRS](https://github.com/WangHongxi2001/RoboMaster-C-Board-INS-Example)
 
+#### Additional Funciton
+- How To Calibrate the IMU:
+> Presse the user key while resetting the MCU, and buzzer would sound, indicating the start of the calibration program. It may take some time to pre-heat the imu. Buzzer will alternatively sound as the imu is calibrating. Once calibratetion is finished, the board will sound a long beep and reset.
+
+> Calibration may take up to 4 minutes, so it's crucial to keep the board in releatively stable at all stages!!!
+
 
 ## General Information
 #### Orientation
-![Construction](Doc/orientation.svg "Figure 1 Robot Orientation")
+From a top view:   
+![Top view](Doc/orientation.svg "Figure 1 Robot Orientation from Top View")
 
 ***RFU*** indicates that Right-Forward-Upward is the correct orientation for the chassis.
 ***Anticlockwise*** rotation direction is positive.
@@ -119,9 +127,9 @@ Here shows how system startup:
 ```
 [Release Optimize]
 Memory region         Used Size  Region Size  %age Used
-          CCMRAM:       24436 B        64 KB     37.29%
-             RAM:       61456 B       128 KB     46.89%
-           FLASH:      128992 B       896 KB     14.06%
+          CCMRAM:       24444 B        64 KB     37.30%
+             RAM:       61464 B       128 KB     46.89%
+           FLASH:      130388 B       896 KB     14.21%
 ```
 
 #### RTOS Trace Info 
